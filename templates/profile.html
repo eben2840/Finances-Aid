@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+ 
+
+
+
+<aside class="admin__aside">
+    <div class="tabContaine">
+        <a href="/newdash"> <div class="tabButton"  style="background-color:#fff; padding:15px; border-radius:5px; color:#fff;"><span class="text-muted" >Navigation Menu</span></div></a>
+        
+        <!--<div class="panel">
+            <ul>
+                <li><input type="checkbox" /><span>İstanbul</span> </li>
+                <li><input type="checkbox" /><span>Ankara</span> </li>
+                <li><input type="checkbox" /><span>İzmir</span> </li>
+                <li><input type="checkbox" /><span>Balıkesir</span> </li>
+            </ul>
+        </div>-->
+        <div class="tabContainer">
+            <a href="/newdash"> <div class="tabButton" style="background-color: #fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-home"></i><span>Dashboard</span></div></a>
+            <div class="tabButtonBorder"></div>
+            <!--<div class="panel">
+                <ul>
+                    <li><input type="checkbox" /><span>İstanbul</span> </li>
+                    <li><input type="checkbox" /><span>Ankara</span> </li>
+                    <li><input type="checkbox" /><span>İzmir</span> </li>
+                    <li><input type="checkbox" /><span>Balıkesir</span> </li>
+                </ul>
+            </div>-->
+        </div>
+    <div class="tabContainer">
+        <a href="/profile"> <div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-users"></i><span>All Students</span></div></a>
+        <div class="tabButtonBorder"></div>
+        <!--<div class="panel">
+            <ul>
+                <li><input type="checkbox" /><span>İstanbul</span> </li>
+                <li><input type="checkbox" /><span>Ankara</span> </li>
+                <li><input type="checkbox" /><span>İzmir</span> </li>
+                <li><input type="checkbox" /><span>Balıkesir</span> </li>
+            </ul>
+        </div>-->
+    </div>
+    <div class="tabContainer">
+        <a href="/addalumni"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
+        <div class="tabButtonBorder"></div>
+    
+    </div>
+
+    <div class="tabContainer">
+        <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
+        <div class="tabButtonBorder"></div>
+    
+    </div>
+
+    
+    <div class="tabContainer">
+        <a href="/report"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Reports</span></div></a>
+        <div class="tabButtonBorder"></div>
+<!--                <div class="panel">
+            <ul>
+                <li><input type="checkbox" /><span>İstanbul</span> </li>
+                <li><input type="checkbox" /><span>Ankara</span> </li>
+                <li><input type="checkbox" /><span>İzmir</span> </li>
+                <li><input type="checkbox" /><span>Balıkesir</span> </li>
+            </ul>
+        </div>-->
+    </div>
+</aside>
+<main class="admin__main">
+  
+    <div class="searchResults">
+        {%for user in users%} 
+        <div class="car" style=" margin-top:30px; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; background-color:#fff; border-radius:20px; padding:20px;">
+            <div class="user">
+          <img src="{{user.image_file}}" loading="lazy" style="object-fit: cover; width: 100%; margin-bottom:10px; border-radius:10px; height: 20vh; " alt="">
+                
+                <div class="nameAndStars" style="display:flex; justify-content:space-between;">
+                    <div class="name"><h6 style="font-size:20px;"><b>{{user.guardian}}</b></h6></div> 
+                <a href="#">
+                    <div class="name" style="background-color:#204902; padding:5px; color:#fff; border-radius:5px;">Edit</div> 
+                </a>
+                </div>
+            </div>
+            
+            
+            <div class="skills">
+                <div class="skillsContainer">
+                    <p class="skill" style="background-color: var(--primary-light);
+    color: #000;
+    width:120px;
+    font-size:20px;
+    padding: var(--spacing-xxxs) var(--spacing-xxs);
+    border-radius: var(--spacing-xxxs);">Level {{user.work}}</p>
+                    
+                    
+                </div>
+            <div  style="display:flex; justify-content:space-between; margin-top:10px;">
+
+                <span class="header"><b>{{user.fullname}}</b></span>
+                <span class="header"></span>
+            </div>
+                
+            </div>
+
+           
+            <hr class="seperator" />
+            
+        </div>
+        {% endfor %}
+    </div>
+</main>
+    {%endblock body%}

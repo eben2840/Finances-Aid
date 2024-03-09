@@ -1,0 +1,377 @@
+{% extends 'userlayout.html' %}
+{% block body %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+  <!-- 
+    - primary meta tags
+  -->
+  <title>DocuTrack</title>
+  <meta name="title" content="Fasteat - The Best Restaurants In Your Home">
+  <meta name="description" content="This is a food html template made by codewithsadee">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favico.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="static/assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+
+</head>
+
+<body>
+
+  <!-- 
+    - #PRELOADER
+  -->
+
+  <div class="loading-container" data-loading-container>
+    <div class="loading-circle"></div>
+  </div>
+
+
+
+
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="static/img/c2.png" width="50" height="30" alt="">
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+        <a href="/post" style="color:#000;"><img src="static/img/app.png" style="width:25px; margin-left:20px;"></a>
+ 
+         
+                
+         <a href="votes" style="text-decoration:none; color:#000;"><img src="static/img/pp.png" style="width:25px; margin-right:25px;"></a> 
+           </button>
+
+
+       
+     </nav>
+
+      <div class="header-action" style="display:flex;">
+        
+        <h5 style=" color: #5454c9;  color:#000; margin-right:30px;" >  <a href="/post" style="color:#000;"><img src="static/img/app.png" style="width:25px; margin-left:20px;"></a>
+  
+            <h5>  <a href="votes" style="text-decoration:none; color:#000;"><img src="static/img/pp.png" style="width:25px; margin-right:25px;"></a> </h5>
+        <!--
+        <a href="upload.html" class="btn btn-primary has-after">Upload</a>-->
+      </div>
+
+      <!--<button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>-->
+
+      <div class="overlay" data-overlay data-nav-toggler></div>
+
+    </div>
+    
+  </header>
+
+
+
+
+
+  <main>
+    <div class="containe" style="margin-top:80px; background-color:#3e8a08; height:300px; padding:20px;">
+      <div class="container">
+        <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:40px; margin-top:40px;">Find your Prescriptions with just a <span style="color:#fff; font-size:15px; padding:10px; border-radius:10px; background-color:#000; width:100px; margin:auto;"><i class="fas fa-search"></i>Search</span><h6>
+        <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px; padding-bottom: 20px;" >
+        <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for your prescriptions" style="width:85%; border: none; " >
+            <i class="fas fa-search" style="font-size:15px;"></i>
+      </form>
+    </div>
+    </div>
+    
+        
+      <article>
+        
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              
+             
+               
+            
+              <!--<div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+              </div>-->
+            </div>
+          </div>
+        </div>
+        
+        </div>
+    <article>
+      <section  aria-label="newsletter">
+        <div class="container">
+
+
+      
+
+          <form action='' method="post" enctype="multipart/form-data" >
+            {{form.hidden_tag()}}
+         
+            <label for="image-picker">
+              <div style="margin:auto; width:290px;">
+                
+                  {% if editCandidate %}
+                  <img id="image-preview" style="height: 30vh;box-shadow: var(--shadow-2); width:100%px; margin-left:30px; object-fit:contain" src={{candidate.testField}} alt="your image" />
+                  {% else %}
+                  <img id="image-preview" style="height: 30vh; box-shadow: var(--shadow-2);margin-left:30px;; object-fit:contain; width:100%" src="https://static.thenounproject.com/png/1156517-200.png" alt="your image" />
+                  {% endif %}
+                  
+              </div>      
+              
+              <h6 id="error" style="color: red; display: none;">Please upload an image to continue</h6>
+              
+            </label>
+            
+         
+          <input class="form-inline my-2 my-lg-0 mt-2 space"style="display:none margin-bottom:510px; margin-top:50px;" id="image-picker" type="file" required="required" accept="image/*" />
+              <div>
+          <label for="surname" >Prescriptions:</label>
+          <input type="text" class="form-inline my-2 my-lg-0 mt-2 space" name="guardian" placeholder="Name of items" ><br>
+    
+          <label for="firstname">Name:</label>
+          <input type="text" class="form-inline my-2 my-lg-0 mt-2 space" name="fullname" placeholder="Please enter your name"><br>
+           
+          <label for="maiden_name">Number:</label>
+          <input type="text" class="form-inline my-2 my-lg-0 mt-2 space" name="work" placeholder="Please enter your number"><br>
+          
+    
+       
+          
+          <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; margin:auto: width:100%; background-color:#204902;" type="submit" id="submitButton"><h6 style="font-size:15px;">Send prescription</h6></button>
+                    
+          <div>
+            
+          
+            <div class="form-floating mb-3" >
+              {{form.image_file ( id="firebaseLink", style="border: none; color:#fff;" )}}
+             
+            </div>
+            
+           
+          
+          
+           
+           
+          
+          
+          
+          
+          
+           
+    
+            </form>
+     
+       
+
+        </div>
+      </section>
+
+
+
+     
+
+     
+
+    </article>
+    <h5>  <a href={{ url_for('userlogout') }} style="text-decoration:none; color:#000;"><img src="static/img/men.png" style="width:25px; margin-right:25px;"></a> </h5>
+
+  </main>
+
+
+
+
+  <script>
+
+    $("#image-picker").change(function (event) {
+      readURL(this);
+      console.log ('touch image')
+        document.getElementById('error').style.display = 'none';
+    
+    });
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            pushImage(input.files[0])
+    
+            reader.onload = function (e) {
+                $('#image-preview').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+    
+    
+        }
+    }
+    </script>
+    
+      
+    <script>
+    
+      
+      
+      // Push batch images to storage and store references in the database
+      var pushImage = function (file) {
+       document.getElementById('submitButton').innerHTML = `
+             <button class="button" style="background-color: #7272F2;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Uploading</button>
+             `
+         // var uid = firebase.auth().currentUser.uid;
+         // Create storage reference
+         var ref = firebase.storage().ref(`/alumni/`).child(file.name + ".jpg");
+         //var ref = firebase.storage().ref(``).child(file.name + ".jpg");
+     
+         // Upload file and get task
+         var task = ref.put(file, {contentType: file.type});
+      
+         // Monitor task for progress
+         task.on('state_changed',
+             // Shows progress of task
+             function progress(snapshot) {
+                 var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                 console.log(percentage);
+             },
+             // Shows any errors occurring during progress
+             function error(err) {
+                 // Handle unsuccessful uploads
+                 console.log(err.message);
+     
+             },
+             // Shows when task is completed
+             );  
+     };
+     
+     
+       function changeimagesss(event) {
+         console.log(event)
+         // console.log(event.target.files[0])
+         // var uploadItem = event.target.files[0]
+         // console.log(uploadItem)
+         pushImage(event)
+     
+         
+       }
+     
+      </script>
+    
+      <script>
+    
+        var firebaseLink = document.getElementById("firebaseLink").innerText
+        // Push batch images to storage and store references in the database
+        var pushImage = function (file) {
+            document.getElementById('submitButton').innerHTML = `
+            <button class="button" style="background-color: #da2d2770;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Please wait while we upload your image</button>
+            `
+    
+           // var uid = firebase.auth().currentUser.uid;
+           // Create storage reference
+           var ref = firebase.storage().ref(`/ineruu-142dc-default-rtdb/Images/`).child(file.name + ".jpg");
+       
+           // Upload file and get task
+           var task = ref.put(file, {contentType: file.type});
+        
+           // Monitor task for progress
+           task.on('state_changed',
+               // Shows progress of task
+               function progress(snapshot) {
+                   var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                   console.log(percentage);
+               },
+               // Shows any errors occurring during progress
+               function error(err) {
+                   // Handle unsuccessful uploads
+                   console.log(err.message);
+       
+               },
+               // Shows when task is completed
+               function complete() {
+                   // Handle successful uploads on complete
+                   var image = task.snapshot.downloadUrl;
+                   var secondImage = task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+               console.log('File available at', downloadURL);
+            //    firebaseLink = downloadURL
+               document.getElementById("firebaseLink").value = downloadURL
+            //    console.log("Firebase Link: " + firebaseLink)
+                document.getElementById('submitButton').innerHTML = `{{form.submit (class="button")}}`
+    
+             });
+                //    console.log(task);
+                //    console.log(image);
+                //    console.log(secondImage.PromiseResult).then(res => {
+                //        console.log("THis is" + res)
+                       
+                //    });
+       
+                   // Data model to be uploaded to the database
+                   var data = {
+                       imageUrl: image
+                   };
+                   
+                   // var db = firebase.database().ref(/GHotelBookMan/Hotels/${uid}/Images).push();
+                   // db.set(data).then(() => {
+                   //     row.empty();
+                   //     loadCurrentHotel(uid);
+                   // });
+               });  
+       };
+       
+       
+         function changeimagesss(event) {
+           console.log(event)
+           // console.log(event.target.files[0])
+           // var uploadItem = event.target.files[0]
+           // console.log(uploadItem)
+           pushImage(event)
+       
+           
+         }
+       
+        </script> 
+  <script src="static/assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
+
+
+{% endblock body %}

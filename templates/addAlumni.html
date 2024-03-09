@@ -1,0 +1,324 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<aside class="admin__aside">
+  <div class="tabContaine">
+      <a href="/newdash"> <div class="tabButton"  style="background-color:#fff; padding:15px; border-radius:5px; color:#fff;"><span class="text-muted" >Navigation Menu</span></div></a>
+      
+      <!--<div class="panel">
+          <ul>
+              <li><input type="checkbox" /><span>İstanbul</span> </li>
+              <li><input type="checkbox" /><span>Ankara</span> </li>
+              <li><input type="checkbox" /><span>İzmir</span> </li>
+              <li><input type="checkbox" /><span>Balıkesir</span> </li>
+          </ul>
+      </div>-->
+      <div class="tabContainer">
+          <a href="/newdash"> <div class="tabButton" style="background-color: #fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-home"></i><span>Dashboard</span></div></a>
+          <div class="tabButtonBorder"></div>
+          <!--<div class="panel">
+              <ul>
+                  <li><input type="checkbox" /><span>İstanbul</span> </li>
+                  <li><input type="checkbox" /><span>Ankara</span> </li>
+                  <li><input type="checkbox" /><span>İzmir</span> </li>
+                  <li><input type="checkbox" /><span>Balıkesir</span> </li>
+              </ul>
+          </div>-->
+      </div>
+  <div class="tabContainer">
+      <a href="/profile"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-users"></i><span>All Students</span></div></a>
+      <div class="tabButtonBorder"></div>
+      <!--<div class="panel">
+          <ul>
+              <li><input type="checkbox" /><span>İstanbul</span> </li>
+              <li><input type="checkbox" /><span>Ankara</span> </li>
+              <li><input type="checkbox" /><span>İzmir</span> </li>
+              <li><input type="checkbox" /><span>Balıkesir</span> </li>
+          </ul>
+      </div>-->
+  </div>
+  <div class="tabContainer">
+      <a href="/addalumni"><div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
+      <div class="tabButtonBorder"></div>
+  
+  </div>
+
+  <div class="tabContainer">
+      <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
+      <div class="tabButtonBorder"></div>
+  
+  </div>
+
+  
+  <div class="tabContainer">
+      <a href="/report"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Reports</span></div></a>
+      <div class="tabButtonBorder"></div>
+<!--                <div class="panel">
+          <ul>
+              <li><input type="checkbox" /><span>İstanbul</span> </li>
+              <li><input type="checkbox" /><span>Ankara</span> </li>
+              <li><input type="checkbox" /><span>İzmir</span> </li>
+              <li><input type="checkbox" /><span>Balıkesir</span> </li>
+          </ul>
+      </div>-->
+  </div>
+</aside>
+<main class="admin__main">
+  
+  <div class="card">
+      <h6 style="margin-top:20px; font-size:30px;">Add Prescriptions:</h6>
+      
+        
+       
+
+
+      <form action='' method="post" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+     
+        <label for="image-picker">
+          <div>
+            
+              {% if editCandidate %}
+              <img id="image-preview" style="height: 30vh;box-shadow: var(--shadow-2); width:100%px; margin-left:30px; object-fit:contain" src={{candidate.testField}} alt="your image" />
+              {% else %}
+              <img id="image-preview" style="height: 30vh; box-shadow: var(--shadow-2);margin-left:30px;; object-fit:contain; width:100%" src="https://static.thenounproject.com/png/1156517-200.png" alt="your image" />
+              {% endif %}
+              
+          </div>      
+          
+          <h6 id="error" style="color: red; display: none;">Please upload an image to continue</h6>
+          
+        </label>
+        <div class="alert alert-primary" role="alert">
+          Tap on the image to upload an item
+        </div>
+     
+      <input style="display:none" id="image-picker" type="file" required="required" accept="image/*" />
+      <label for="surname">Name:</label>
+      <input type="text" class="form-control" name="guardian" placeholder="Name" ><br>
+ 
+      
+      <label for="surname">Student ID:</label>
+      <input type="text" class="form-control" name="guardian" placeholder="Student ID" ><br>
+
+      <label for="firstname">Course:</label>
+      <input type="text" class="form-control" name="fullname" placeholder="Course"><br>
+       
+      <label for="maiden_name">Level:</label>
+      <input type="text" class="form-control" name="work" placeholder="Level"><br>
+      
+      <label for="maiden_name">Fees</label>
+      <input type="text" class="form-control" name="work" placeholder="Fees"><br>
+      
+      <label for="maiden_name">Arreas</label>
+      <input type="text" class="form-control" name="work" placeholder="Arreas"><br>
+      
+
+   
+      
+      <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; width:100%; background-color: #772620;" type="submit" id="submitButton"><h6 style="font-size:15px;">Add Student</h6></button>
+                
+      
+        
+      
+        <div class="form-floating mb-3" >
+          {{form.image_file (class="input-field", id="firebaseLink", style="border: none; color:#fff;" )}}
+         
+        </div>
+        
+       
+      
+      
+       
+       
+      
+      
+      
+      
+      
+       
+
+        </form>
+</main>
+  
+
+
+
+  <main>
+    <article>
+      
+
+
+
+     
+
+     
+
+    </article>
+    <h5>  <a href={{ url_for('userlogout') }} style="text-decoration:none; color:#000;"><img src="static/img/menu.png" style="width:25px; margin-right:25px;"></a> </h5>
+
+  </main>
+
+
+
+  <script>
+
+    $("#image-picker").change(function (event) {
+      readURL(this);
+      console.log ('touch image')
+        document.getElementById('error').style.display = 'none';
+    
+    });
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            pushImage(input.files[0])
+    
+            reader.onload = function (e) {
+                $('#image-preview').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+    
+    
+        }
+    }
+    </script>
+    
+      
+    <script>
+    
+      
+      
+      // Push batch images to storage and store references in the database
+      var pushImage = function (file) {
+       document.getElementById('submitButton').innerHTML = `
+             <button class="button" style="background-color: #7272F2;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Uploading</button>
+             `
+         // var uid = firebase.auth().currentUser.uid;
+         // Create storage reference
+         var ref = firebase.storage().ref(`/alumni/`).child(file.name + ".jpg");
+         //var ref = firebase.storage().ref(``).child(file.name + ".jpg");
+     
+         // Upload file and get task
+         var task = ref.put(file, {contentType: file.type});
+      
+         // Monitor task for progress
+         task.on('state_changed',
+             // Shows progress of task
+             function progress(snapshot) {
+                 var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                 console.log(percentage);
+             },
+             // Shows any errors occurring during progress
+             function error(err) {
+                 // Handle unsuccessful uploads
+                 console.log(err.message);
+     
+             },
+             // Shows when task is completed
+             );  
+     };
+     
+     
+       function changeimagesss(event) {
+         console.log(event)
+         // console.log(event.target.files[0])
+         // var uploadItem = event.target.files[0]
+         // console.log(uploadItem)
+         pushImage(event)
+     
+         
+       }
+     
+      </script>
+    
+      <script>
+    
+        var firebaseLink = document.getElementById("firebaseLink").innerText
+        // Push batch images to storage and store references in the database
+        var pushImage = function (file) {
+            document.getElementById('submitButton').innerHTML = `
+            <button class="button" style="background-color: #da2d2770;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Please wait while we upload your image</button>
+            `
+    
+           // var uid = firebase.auth().currentUser.uid;
+           // Create storage reference
+           var ref = firebase.storage().ref(`/ineruu-142dc-default-rtdb/Images/`).child(file.name + ".jpg");
+       
+           // Upload file and get task
+           var task = ref.put(file, {contentType: file.type});
+        
+           // Monitor task for progress
+           task.on('state_changed',
+               // Shows progress of task
+               function progress(snapshot) {
+                   var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                   console.log(percentage);
+               },
+               // Shows any errors occurring during progress
+               function error(err) {
+                   // Handle unsuccessful uploads
+                   console.log(err.message);
+       
+               },
+               // Shows when task is completed
+               function complete() {
+                   // Handle successful uploads on complete
+                   var image = task.snapshot.downloadUrl;
+                   var secondImage = task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+               console.log('File available at', downloadURL);
+            //    firebaseLink = downloadURL
+               document.getElementById("firebaseLink").value = downloadURL
+            //    console.log("Firebase Link: " + firebaseLink)
+                document.getElementById('submitButton').innerHTML = `{{form.submit (class="button")}}`
+    
+             });
+                //    console.log(task);
+                //    console.log(image);
+                //    console.log(secondImage.PromiseResult).then(res => {
+                //        console.log("THis is" + res)
+                       
+                //    });
+       
+                   // Data model to be uploaded to the database
+                   var data = {
+                       imageUrl: image
+                   };
+                   
+                   // var db = firebase.database().ref(/GHotelBookMan/Hotels/${uid}/Images).push();
+                   // db.set(data).then(() => {
+                   //     row.empty();
+                   //     loadCurrentHotel(uid);
+                   // });
+               });  
+       };
+       
+       
+         function changeimagesss(event) {
+           console.log(event)
+           // console.log(event.target.files[0])
+           // var uploadItem = event.target.files[0]
+           // console.log(uploadItem)
+           pushImage(event)
+       
+           
+         }
+       
+        </script> 
+  <script src="static/assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
+
+
+{% endblock body %}

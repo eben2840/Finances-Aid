@@ -1,0 +1,59 @@
+
+
+
+{% extends 'userlayout.html' %}
+
+
+  
+{% block body %}
+
+<section style="background-color: #fff;">
+    <div class="container py-5">
+  
+      <div class="row d-flex justify-content-center" class="overflow-auto">
+        <div  class="overflow-auto">
+  
+          <div class="" >
+           
+            <div class="card-body" data-mdb-perfect-scrollbar="true" style="height: 450px">
+                {{profile.guardian}}
+                <div class="d-flex flex-row justify-content-start" class="overflow-auto">
+                    <img src="static/img/cf1.png" style="width:40px;border-radius:50px; height:40px; margin-bottom:5px;">
+     
+                <div>
+                    
+                    <p class="small p-2 ms-3 mb-1 text-white rounded-3 bg-primary">{{user.chatme}}</p>
+                    
+                    <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
+                </div>
+            </div>
+            {%for user in users%} 
+
+              {% endfor %}
+              
+              
+              
+
+            </div>
+           
+          </div>
+  
+        </div>
+      </div>
+      <form action='' method="post">
+        {{form.hidden_tag()}}
+      
+      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3" class="position-absolute bottom-0 end-0">
+        <img src="static/img/cf1.png" style="width:40px;border-radius:50px; height:40px; margin-bottom:5px;">
+     
+        <input type="text" name="hall" class="form-control form-control-lg" id="exampleFormControlInput1"
+          placeholder="Type message">
+          <button class="btn bg-primary" style="color: #fff;  height: 50px;     border: none;" type="submit" >send</button>
+         
+      </div>
+    </form>
+    </div>
+  </section>
+
+
+{% endblock body %}

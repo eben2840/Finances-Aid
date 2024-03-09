@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Staff Management</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/css/maths.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  
+  <body>
+    <div class="admin">
+        <header class="admin__header" style="position: fixed; width:100%;">
+            <div class="logo"><img src="static/img/qw.png" style="width:70px;" />
+                <!--span>Staff Management</span>--></div>
+            <nav  class="navContainer fixed  " style="display:flex;  justify-content:space-between;">
+                <div class="searc" style="display:flex;">
+                    
+                    <input type="text"class="form-control" style="width:600px; padding:20px; border-radius:30px 0 0 30px; background-color:#9c9eb266;" placeholder="Search for a staff" />
+                   <button class="up" style="text-align:center; background-color:#9c9eb266;
+                   cursor: pointer;
+                   border: none;
+                   
+                  
+                    color:#000;border-radius:0 30px 30px 0;  font-size:14px; width:60px;">S</button>
+                      
+                        
+                 
+                </div>
+               
+                <!--<a class="link active" href="#">Dashboard</a>
+                <a class="link" href="#">Schedule</a>
+                <a class="link" href="#">Trainers</a>
+                <a class="link" href="#">Customers</a>-->
+                <div class="userContainer">
+                    <!--<div class="notifications">
+                        <i class="far fa-bell"></i>
+                    </div>-->
+                    
+                </div>
+            </nav>
+        </header>
+        {% block body %}
+        {% endblock%}
+
+      
+    </div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+  
+  <!-- <script defer src="//firebase/8.9.1/firebase-storage.js"></script> -->
+  
+
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBPHDVrXV4nn_4agQgWFItDlS8z9cvq5zw",
+      authDomain: "centralalumni.firebaseapp.com",
+      projectId: "centralalumni",
+      storageBucket: "centralalumni.appspot.com",
+      messagingSenderId: "270504690849",
+      appId: "1:270504690849:web:b03ee12ab92e157196dce0",
+      measurementId: "G-9T21K58F10"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

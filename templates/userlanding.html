@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="/static/images/logo/favicon.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+
+
+  <link href="static/img/cf2.png" rel="icon">
+  <link href="static/img/cf2.png" rel="apple-touch-icon">
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ske.css')}}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>CampusFila</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+
+    
+
+
+
+<div  style="+border-radius:10px 0 0 150px; padding: 10px; ">
+  {%for user in users%} 
+  
+
+  <div class="card">
+    <div class="header">
+      <div class="img"></div>
+      <div class="details">
+        <span class="name"></span>
+        <span class="about"></span>
+      </div>
+    </div>
+    <div class="description">
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+      <div class="line line-3"></div>
+    </div>
+    <div class="btns">
+      <div class="btn btn-1"></div>
+      <div class="btn btn-2"></div>
+    </div>
+  </div>
+
+
+
+{% endfor %}
+<div class="model-overlay">
+  <div class="model-content">
+    <!-- Add your model content here -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success mb-3" role="alert">
+            {{ message }} 
+                  </div>
+        
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+     <a href="/ulogin"> <button  class="btn btn-lg" style="width: 90%; background:  #631AAC;  color: #fff; padding: 12px 20px; font-weight: 300; border: none; border-radius: 10px; font-weight: bold;" 
+      >Login</button></a>
+    <!--<button onclick="closeModel()">Close</button>-->
+  </div>
+</div>
+</div>
+
+</div>
+
+
+
+<script>
+  function closeModel() {
+    var modelOverlay = document.querySelector('.model-overlay');
+    modelOverlay.style.display = 'none';
+  }
+</script>
+    
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+</body>
+</html>

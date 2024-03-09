@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/loading.css')}}">
+  
+  <title>CampusFila</title>
+</head>
+<title>
+<body> thehbuj
+  
+  <div class="loading-screen">
+    
+
+      <div class="loading-screen">
+        <div class="loading-animation">
+          <img src="static/img/cf2.png" alt="" class="logo" >
+          
+          <div class="loading-bar"></div>
+        <!-- Add your loading screen content here -->
+       
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.loading-screen').style.display = 'block'; // Show the loading screen
+
+    setTimeout(function() {
+      window.location.href = '/userlanding'; // Navigate to the next page after a certain time (e.g., 3 seconds)
+    }, 4000);
+  });
+</script>
+</html>
