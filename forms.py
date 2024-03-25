@@ -51,9 +51,53 @@ class Registration(FlaskForm):
 
 #forms
 class Adduser(FlaskForm):
-    fullname = StringField('fullname')
-    work= StringField('work')
+    schools = SelectField('program',choices=[('Program','Program'),('ECONOMICS', 'ECONOMICS'),('PUBLIC HEALTH', 'PUBLIC HEALTH'),
+                ('MANAGEMENT & PA', 'MANAGEMENT & PA'),
+                ('MARKETING', 'MARKETING'),
+                ('ACCOUNTING', 'ACCOUNTING'),
+                ('HUMAN RESOURCE', 'HUMAN RESOURCE'),
+                ('BANKING & FINANCE', 'BANKING & FINANCE'),
+                ('Civil Engineering', 'Civil Engineering'),
+                ('Information Technology', 'Information Technology'),
+                ('Computer Science', 'Computer Science'),
+                ('MKT', 'MKT'),
+                ('BKF', 'BKF'),
+                ('HRM', 'HRM'),
+                ('Nursing', 'Nursing'),
+                ('PA Dept.', 'PA Dept.'),
+                ('Faculty of Law', 'Faculty of Law'),
+                ('Sociology', 'Sociology'),
+                ('Vision and Life', 'Vision and Life'),
+                ('Social Work', 'Social Work'),
+                # ('Communications and Laguages Studies', 'Communications and Laguages Studies'),
+                ('Theology', 'Theology'),
+                ('Psychology', 'Psychology'),
+                ('Environment and Development Studies', 'Environment and Development Studies'),
+                ('Communications and Media Studies', 'Communications and Media Studies'),
+                ('Agribusiness', 'Agribusiness'),
+                ('Design (Interior, Graphic & Fashion)', 'Design (Interior, Graphic & Fashion)'),
+                ('Real Estate', 'Real Estate'),
+                ('Architecture', 'Architecture'),
+                ('Doctor of Pharmacy', 'Doctor of Pharmacy'),
+                # ('Pharmacy Practice', 'Pharmacy Practice'),
+                ('MGT & P.A.', 'MGT & P.A.'),
+             
+                
+
+                ], default=None )
+    year= SelectField('Level', choices=[
+    ('Level', 'level'),
+    ('100', '100'),
+    ('200', '200'),
+    ('300', '300'),
+    ('400', '400'),
+    ('500', '500'),
+    
+], default=None)
     guardian= StringField('guardian')
+    fees= StringField('fees')
+    index= StringField('index')
+    arrears= StringField('arrears')
     image_file = StringField('image_file')
     submit = SubmitField('submit') 
     

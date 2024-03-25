@@ -100,19 +100,21 @@
  
       
       <label for="surname">Student ID:</label>
-      <input type="text" class="form-control" name="guardian" placeholder="Student ID" ><br>
+      <input type="number" class="form-control" name="index" placeholder="Student ID" ><br>
 
-      <label for="firstname">Course:</label>
-      <input type="text" class="form-control" name="fullname" placeholder="Course"><br>
-       
+      <label for="school">Course:</label>
+      {{form.schools( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
+
+    
       <label for="maiden_name">Level:</label>
-      <input type="text" class="form-control" name="work" placeholder="Level"><br>
+      {{form.year( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
+      
       
       <label for="maiden_name">Fees</label>
-      <input type="text" class="form-control" name="work" placeholder="Fees"><br>
+      <input type="number" class="form-control" name="fee" placeholder="Fees"><br>
       
       <label for="maiden_name">Arreas</label>
-      <input type="text" class="form-control" name="work" placeholder="Arreas"><br>
+      <input type="number" class="form-control" name="arrears" placeholder="Arreas"><br>
       
 
    

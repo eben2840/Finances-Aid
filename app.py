@@ -131,8 +131,11 @@ class alumni(db.Model, UserMixin):
     
 class User(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
-    fullname= db.Column(db.String()  )
-    work= db.Column(db.String()  )
+    schools= db.Column(db.String()  )
+    year= db.Column(db.String()  )
+    fees= db.Column(db.String()  )
+    arrears= db.Column(db.String()  )
+    index= db.Column(db.String()  )
     guardian= db.Column(db.String()  )
     image_file = db.Column(db.String(20))
     def __repr__(self):
@@ -202,7 +205,7 @@ def dashboard():
         flash(f"There was a problem")
     return render_template('dashboard.html', title='dashboard')
 
-    eay
+    
 @app.route('/getstudent')
 def getstudent():
     return render_template('getstudent.html')
@@ -221,7 +224,6 @@ def chat():
                   extra=form.extra.data,    
                
                   )
-       
             db.session.add(post)
             db.session.commit()
             flash("You Just Wrote a Post", "success")
@@ -308,10 +310,13 @@ def addalumni():
     form=Adduser()
     if form.validate_on_submit():
   
-            new=User(fullname=form.fullname.data,
+            new=User(schools=form.schools.data,
                  
                   
-                   work=form.work.data,  
+                   year=form.year.data,  
+                   fees=form.fees.data,  
+                   index=form.index.data,  
+                   arrears=form.arrears.data,  
                    guardian=form.guardian.data,  
                     
                image_file=form.image_file.data
@@ -319,7 +324,7 @@ def addalumni():
        
             db.session.add(new)
             db.session.commit()
-            flash("New Prescription added", "success")
+            flash("New Student added", "success")
             return redirect('/newdash')
     print(form.errors)
     return render_template("addAlumni.html", form=form)
@@ -439,11 +444,11 @@ def newdash():
 def search():
     form= Search()
     if request.method == 'POST': 
-        posts =Postme.query
+        posts =User.query
         if form.validate_on_submit():
             postsearched=form.searched.data
-            posts =posts.filter(Postme.extra.like('%'+ postsearched + '%') )
-            posts =posts.order_by(Postme.extra).all() 
+            posts =posts.filter(User.guardian.like('%'+ postsearched + '%') )
+            posts =posts.order_by(User.guardian).all() 
             flash("You searched for "+ postsearched, "success")  
             print(posts)   
             print(current_user)   
@@ -706,7 +711,7 @@ def ulogin():
         print("form Validated successfully")
         user = Person.query.filter_by(email = form.email.data).first()
         login_user(user)
-        flash ('Welcome to Jaan)' +' ' + user.name ,'success')
+        flash ('Welcome to your dashboard' +' ' + user.name ,'success')
         return redirect(url_for('newdash'))
     return render_template('userlogin.html', form=form)
 
