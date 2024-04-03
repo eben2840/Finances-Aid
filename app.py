@@ -36,6 +36,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = "ulogin"
 login_manager.login_message_category = "info"
 migrate = Migrate(app, db)
+
 from forms import *
 
 @login_manager.user_loader
@@ -764,7 +765,7 @@ def userbase():
     return render_template("userbase.html", name=name, users=users,user=user,current_user=current_user, story=story)
  
 
-  
+
 
 
 @app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])
