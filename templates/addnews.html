@@ -39,34 +39,33 @@
       </div>-->
   </div>
   <div class="tabContainer">
-      <a href="/addalumni"><div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
+      <a href="/addalumni"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
       <div class="tabButtonBorder"></div>
   
   </div>
 
 
-
   <div class="tabContainer">
-    <a href="/addnews"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add News</span></div></a>
+    <a href="/addnews"><div class="tabButton" style="background-color:#772620;; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-plus-circle"></i><span>Add News</span></div></a>
     <div class="tabButtonBorder"></div>
 
 </div>
-
-
 
 <div class="tabContainer">
     <a href="/addbill"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Bill</span></div></a>
     <div class="tabButtonBorder"></div>
 
 </div>
-<div class="tabContainer">
-  <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
-  <div class="tabButtonBorder"></div>
 
-</div>
+  <div class="tabContainer">
+      <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
+      <div class="tabButtonBorder"></div>
+  
+  </div>
+
   
   <div class="tabContainer">
-      <a href="#"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Reports</span></div></a>
+      <a href="/report"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Reports</span></div></a>
       <div class="tabButtonBorder"></div>
 <!--                <div class="panel">
           <ul>
@@ -81,7 +80,7 @@
 <main class="admin__main">
   
   <div class="card">
-      <h6 style="margin-top:20px; font-size:30px;">Add Student:</h6>
+      <h6 style="margin-top:20px; font-size:30px;">Add News:</h6>
       
         
        
@@ -90,28 +89,33 @@
       <form action='' method="post" enctype="multipart/form-data">
         {{form.hidden_tag()}}
      
-       
+        <label for="image-picker">
+          <div>
+            
+              {% if editCandidate %}
+              <img id="image-preview" style="height: 30vh;box-shadow: var(--shadow-2); width:100%px; margin-left:30px; object-fit:contain" src={{candidate.testField}} alt="your image" />
+              {% else %}
+              <img id="image-preview" style="height: 30vh; box-shadow: var(--shadow-2);margin-left:30px;; object-fit:contain; width:100%" src="https://static.thenounproject.com/png/1156517-200.png" alt="your image" />
+              {% endif %}
+              
+          </div>      
+          
+          <h6 id="error" style="color: red; display: none;">Please upload an image to continue</h6>
+          
+        </label>
+        <div class="alert alert-primary" role="alert">
+          Tap on the image to upload an item
+        </div>
      
-      <label for="surname">Name:</label>
-      <input type="text" class="form-control" name="guardian" placeholder="Name" ><br>
+      <input style="display:none" id="image-picker" type="file" required="required" accept="image/*" />
+      <label for="surname">Description</label>
+      <input type="text" class="form-control" name="guardian" placeholder="Description" ><br>
  
       
-      <label for="surname">Student ID:</label>
-      <input type="text" class="form-control" name="index" placeholder="Student ID" ><br>
-
-      <label for="school">Course:</label>
-      {{form.schools( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
-
-    
-      <label for="maiden_name">Level:</label>
-      {{form.year( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
-      
-      
-      <label for="maiden_name">Fees</label>
-      <input type="number" class="form-control" name="fees" placeholder="Fees"><br>
-      
-      <label for="maiden_name">Arreas</label>
-      <input type="number" class="form-control" name="arrears" placeholder="Arreas"><br>
+     
+   
+      <label for="maiden_name">Department</label>
+      <input type="text" class="form-control" name="arrears" placeholder="Department"><br>
       
 
    
@@ -119,7 +123,12 @@
       <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; width:100%; background-color: #772620;" type="submit" id="submitButton"><h6 style="font-size:15px;">Add Student</h6></button>
                 
       
-   
+        
+      
+        <div class="form-floating mb-3" >
+          {{form.image_file (class="input-field", id="firebaseLink", style="border: none; color:#fff;" )}}
+         
+        </div>
         
        
       

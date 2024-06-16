@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +13,8 @@
   <title></title>
   <meta name="title" content="">
   <meta name="description" content="">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="static/css/index.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
@@ -62,6 +62,8 @@
     <div class="loading-circle"></div>
   </div>
 </div>
+
+
 
 
   <!-- 
@@ -124,20 +126,8 @@
 
 
 
-
   <main>
-    <div class="containe" style="margin-top:80px; background-color:#772620; height:300px; padding:20px;">
-    <div class="container">
-      <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
     
-        
-     <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px; padding-bottom: 20px;" >
-      <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for ID Number" style="width:85%; padding:10px;  " >
-          <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-    </form>
-    
-  </div>
-  </div>
     
  
     <div class="container">
@@ -155,12 +145,7 @@
         <div class="modal-dialog modal-dialog-centered" >
           <div class="modal-content" style="border-radius:20px;">
             
-           
-              <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px;width:2000px; padding-bottom: 20px; border-radius:20px;" >
-                <input type="text"
-                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for your prescriptions" style="width:700px; padding:15px;   " >
-                    <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-              </form>
+            
           
             <!--<div class="modal-footer">
               <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
@@ -184,9 +169,42 @@
 {% endif %}
 {% endwith %}
 
-{% block body %}
-{% endblock%}
+<span class="" style="font-size:25px; color:#000; margin-top:100px;">
+  <b>News Feeds</b>
+</span>
+<h6 style="font-size: small; color:#00;"> News from the Finances Department</h6>
 
+
+
+
+    
+  <div class="row">
+   
+
+    {%for users in users%} 
+    
+    <div class="col-md-4 col-12" style="margin-top:50px; border-radius:20px;">
+      <a style="text-decoration: none;" href="/level">
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+          <img src="{{users.image_file}}" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+          <div style="background-color:#fff;  padding: 10px; ">  
+            <div style="display: flex; justify-content: space-between;">
+              <h6 class="text-muted" style="font-size: small; color:#000;">🔥 Trending{{users.arrears}}</h6>
+              <h6 class="text-muted" style="font-size: small; color:#000;">2nd June 2024</h6>
+              
+            </div>
+            <h6 style="color: #000; font-size:17px; margin-top:10px;" >{{users.guardian}}</h6>
+            
+          </div>
+      </div>
+      </a>
+    </div>
+
+    {% endfor %}
+    
+    </div>
+    
+  </div>
   
 
     </article>
@@ -194,51 +212,52 @@
 
 
 
-<footer>
-  <div class="container">
-    <div class="row">
-            <div class="col-lg-4">
-                <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" alt="Central University Logo" class="logo">
-                <address>
-                    <span class="fs-2"><b>Mission</b></span>
-                    We aim to provide transparent, efficient, and supportive financial solutions to empower students in managing their financial obligations effectively while promoting financial literacy and responsible financial decision-making within the university community.
-                   
-                </address>
-               
+
+  <footer>
+    <div class="container">
+      <div class="row">
+              <div class="col-lg-4">
+                  <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" alt="Central University Logo" class="logo">
+                  <address>
+                      <span class="fs-2"><b>Mission</b></span>
+                      We aim to provide transparent, efficient, and supportive financial solutions to empower students in managing their financial obligations effectively while promoting financial literacy and responsible financial decision-making within the university community.
+                     
+                  </address>
+                 
+                </div>
+    <div class="col-lg-4">
+      <ul>
+        <h4><b>Faculties</b></h4>
+          <li><a href="#">Pharmacy</a></li>
+          <li><a href="#">Law</a></li>
+          <li><a href="#">Medical Sciences</a></li>
+          <li><a href="#">Nursing and Midwifery</a></li>
+          <li><a href="#">Engineering & Technology</a></li>
+          <li><a href="#">Social Sciences</a></li>
+          <li><a href="#">Architecture and Design</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Graduate School</a></li>
+          <li><a href="#">CDPE</a></li>
+      </ul>
+  </div>
+              
+              <div class="col-lg-4">
+                  <h4><b>Useful Numbers</b></h4>
+                 
+                  <p>Main Phone: <a href="tel:+233303331850">+233 303 331 850</a></p>
+                  <p>Finances: <a href="tel:+233307020540">+233 307 020 540</a></p>
+                  <p>Whatsapp: <a href="tel:+233233331180">+233 233 331 180</a></p>
+                  <p>Email: <a href="mailto:academicdirector@central.edu.gh">academicdirector@central.edu.gh</a></p>
+              
               </div>
-  <div class="col-lg-4">
-    <ul>
-      <h4><b>Faculties</b></h4>
-        <li><a href="#">Pharmacy</a></li>
-        <li><a href="#">Law</a></li>
-        <li><a href="#">Medical Sciences</a></li>
-        <li><a href="#">Nursing and Midwifery</a></li>
-        <li><a href="#">Engineering & Technology</a></li>
-        <li><a href="#">Social Sciences</a></li>
-        <li><a href="#">Architecture and Design</a></li>
-        <li><a href="#">Business</a></li>
-        <li><a href="#">Graduate School</a></li>
-        <li><a href="#">CDPE</a></li>
-    </ul>
-</div>
-            
-            <div class="col-lg-4">
-                <h4><b>Useful Numbers</b></h4>
-               
-                <p>Main Phone: <a href="tel:+233303331850">+233 303 331 850</a></p>
-                <p>Finances: <a href="tel:+233307020540">+233 307 020 540</a></p>
-                <p>Whatsapp: <a href="tel:+233233331180">+233 233 331 180</a></p>
-                <p>Email: <a href="mailto:academicdirector@central.edu.gh">academicdirector@central.edu.gh</a></p>
-            
-            </div>
+          </div>
+         
         </div>
-       
+        <div class="footer-bottom text-white" style="background-color:#772620;">
+          <p>&copy; Copyright <strong>Central University</strong>. All Rights Reserved</p>
       </div>
-      <div class="footer-bottom text-white" style="background-color:#772620;">
-        <p>&copy; Copyright <strong>Central University</strong>. All Rights Reserved</p>
-    </div>
-    </footer>
-    <script src="scripts.js"></script>
+      </footer>
+      <script src="scripts.js"></script>
 
 
   <!-- 
@@ -260,10 +279,45 @@
 
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const navToggler = document.querySelector('[data-nav-toggler]');
+    const navOverlay = document.querySelector('[data-overlay]');
+    const navMenu = document.querySelector('#navbarText');
+
+    navToggler.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      navOverlay.classList.toggle('active');
+    });
+
+    navOverlay.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+      navOverlay.classList.remove('active');
+    });
+  });
+</script>
 
 
+<script>
+  $(document).ready(function() {
+      $('#schoolFilter, #yearFilter').on('change', function() {
+          var selectedSchool = $('#schoolFilter').val();
+          var selectedYear = $('#yearFilter').val();
+          $('.department-item').hide();
+          if (selectedSchool === 'all' && selectedYear === 'all') {
+              $('.department-item').show();
+          } else if (selectedSchool === 'all') {
+              $('.department-item[data-year="' + selectedYear + '"]').show();
+          } else if (selectedYear === 'all') {
+              $('.department-item[data-school="' + selectedSchool + '"]').show();
+          } else {
+              $('.department-item[data-school="' + selectedSchool + '"][data-year="' + selectedYear + '"]').show();
+          }
+      });
+  });
+</script>
 
-  
+
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
 

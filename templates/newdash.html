@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'admin.html' %}
 
 {% block body %}
  
@@ -40,17 +40,30 @@
         </div>-->
     </div>
     <div class="tabContainer">
-        <a href="/addalumni"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
+        <a href="/addalumni"><div class="tabButton" style="background-color:#fff; padding:15px; text-decoration:none; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Student</span></div></a>
         <div class="tabButtonBorder"></div>
     
     </div>
+
+   
 
     <div class="tabContainer">
-        <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
+        <a href="/addnews"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add News</span></div></a>
         <div class="tabButtonBorder"></div>
     
     </div>
-
+    
+    <div class="tabContainer">
+        <a href="/addbill"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-plus-circle"></i><span>Add Bill</span></div></a>
+        <div class="tabButtonBorder"></div>
+    
+    </div>
+    
+    <div class="tabContainer">
+        <a href="#"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; text-decoration:none; color:#000;"><i class="fas fa-plus-circle"></i><span>Add CSV</span></div></a>
+        <div class="tabButtonBorder"></div>
+    
+    </div>
     
     <div class="tabContainer">
         <a href="/report"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000"><i class="fa fa-database"></i><span>Reports</span></div></a>

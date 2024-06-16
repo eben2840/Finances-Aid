@@ -130,7 +130,7 @@ class alumni(db.Model, UserMixin):
 
     
     
-class User(db.Model,UserMixin):
+class Student(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     schools= db.Column(db.String()  )
     year= db.Column(db.String()  )
@@ -138,10 +138,17 @@ class User(db.Model,UserMixin):
     arrears= db.Column(db.String()  )
     index= db.Column(db.String()  )
     guardian= db.Column(db.String()  )
-    image_file = db.Column(db.String(20))
     def __repr__(self):
         return f"User('{self.id}', {self.fullname}"
- 
+    
+    
+class User(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    arrears= db.Column(db.String()  )
+    guardian= db.Column(db.String()  )
+    image_file = db.Column(db.String(20))
+    def __repr__(self):
+        return f"User('{self.id}', {self.arrears}"
  
   
 class Storypost(db.Model,UserMixin):
@@ -204,36 +211,38 @@ def dashboard():
     if current_user == None:
         flash("Welcome to the CentralAlumina " + current_user.email, "Success")
         flash(f"There was a problem")
-    return render_template('dashboard.html', title='dashboard')
+    return render_template('dashboard.html')
 
     
 @app.route('/getstudent')
 def getstudent():
     return render_template('getstudent.html')
 
-@app.route('/chat', methods=['GET', 'POST'])
+@app.route('/addbill', methods=['GET', 'POST'])
 @login_required
-def chat():
-    form=Post()
+def addbill():
+    print("Entering addbill function")
+    form=Programfield()
+    print("Form object created:", form)
     if form.validate_on_submit():
-  
-            post=Postme(  
-                   telephone=form.telephone.data,  
-                  
-                   address=form.address.data,  
-                   
-                  extra=form.extra.data,    
-               
-                  )
-            db.session.add(post)
-            db.session.commit()
-            flash("You Just Wrote a Post", "success")
-            return redirect('/chat')
-    user=Postme.query.order_by(Postme.id.desc()).all()
-    print(user)
-    print(current_user)
-    print(form.errors)
-    return render_template('chat.html', form=form,user=user,current_user=current_user)
+        print("Form is valid")
+        school = form.school.data
+        department = form.department.data
+        name = form.name.data
+        print("Form data:", school, department, name)
+        users=Program(  
+                   school=school,  
+                   department=department,  
+                   name=name,    
+                )
+        db.session.add(users)
+        db.session.commit()
+        print("Added new bill to database")
+        flash("You just added a new bill", "success")
+        return redirect('newdash')
+    print("Form is not valid")
+    print("Form errors:", form.errors)
+    return render_template('addbill.html', form=form)
 
 @app.route('/votes')
 def votes():
@@ -308,19 +317,15 @@ def addpost():
 @app.route('/addalumni', methods=['GET', 'POST'])
 @login_required
 def addalumni():
-    form=Adduser()
+    form=Addstudent()
     if form.validate_on_submit():
   
-            new=User(schools=form.schools.data,
-                 
-                  
+            new=Student(schools=form.schools.data,
                    year=form.year.data,  
                    fees=form.fees.data,  
                    index=form.index.data,  
                    arrears=form.arrears.data,  
                    guardian=form.guardian.data,  
-                    
-               image_file=form.image_file.data
                   )
        
             db.session.add(new)
@@ -329,6 +334,28 @@ def addalumni():
             return redirect('/newdash')
     print(form.errors)
     return render_template("addAlumni.html", form=form)
+
+
+
+@app.route('/addnews', methods=['GET', 'POST'])
+@login_required
+def addnews():
+    form=Adduser()
+    if form.validate_on_submit():
+  
+            new=User(  
+                   arrears=form.arrears.data,  
+                   guardian=form.guardian.data,  
+                    
+               image_file=form.image_file.data
+                  )
+       
+            db.session.add(new)
+            db.session.commit()
+            flash("News Added", "success")
+            return redirect('/newdash')
+    print(form.errors)
+    return render_template("addnews.html", form=form)
 
 
 @app.route('/single/<int:userid>', methods=['GET', 'POST'])
@@ -406,11 +433,28 @@ def mains():
 @app.route('/level')
 def level():  
     name=Person.query.order_by(Person.id.desc()).all()
-    users=User.query.order_by(User.id.desc()).all()
+    users=Student.query.order_by(Student.id.desc()).all()
     user=Postme.query.order_by(Postme.id.desc()).all()
     story=Storypost.query.order_by(Storypost.id.desc()).all()
     print(current_user)
     return render_template("level.html", name=name, users=users,user=user,current_user=current_user, story=story)
+ 
+@app.route('/bill')
+def bill():  
+    
+    name=Person.query.order_by(Person.id.desc()).all()
+    bill=Program.query.order_by(Program.id.desc()).all()
+    users=User.query.order_by(User.id.desc()).all()
+    user=Postme.query.order_by(Postme.id.desc()).all()
+    story=Storypost.query.order_by(Storypost.id.desc()).all()
+    print(current_user)
+    return render_template("bill.html", name=name,bill=bill, users=users,user=user,current_user=current_user, story=story)
+ 
+ 
+@app.route('/news')
+def news():  
+    users=User.query.order_by(User.id.desc()).all()
+    return render_template("news.html", users=users)
  
 @app.route('/profile')
 def profile():  
@@ -438,22 +482,20 @@ def newdash():
     return render_template("newdash.html")
 
 
-
-#search for user
 @app.route('/search', methods=[ 'POST'])
-@login_required
 def search():
-    form= Search()
+    form= Search() # Initialize postsearched with an empty string or a suitable default value
+
     if request.method == 'POST': 
         posts =User.query
         if form.validate_on_submit():
             postsearched=form.searched.data
-            posts =posts.filter(User.guardian.like('%'+ postsearched + '%') )
-            posts =posts.order_by(User.guardian).all() 
+            posts =posts.filter(User.index.like('%'+ postsearched + '%') )
+            posts =posts.order_by(User.index).all() 
             flash("You searched for "+ postsearched, "success")  
             print(posts)   
             print(current_user)   
-    return render_template("search.html", form=form, searched =postsearched, posts=posts,current_user=current_user)
+    return render_template("search.html", form=form, searched = postsearched, posts=posts,current_user=current_user)
 
 
 
@@ -766,6 +808,11 @@ def userbase():
  
 
 
+@app.route('/level100', methods=['GET', 'POST'])
+def level100():
+    # sendtelegram("New User on Pasco Portal level 100")
+    # hundred = Course.query.filter_by(level='100').all()
+    return render_template('level100.html')
 
 
 @app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])

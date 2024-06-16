@@ -1,63 +1,33 @@
+{% extends 'layout.html' %}
+{% block body %}
 
 
-    {% extends 'layout.html' %}
-    {% block body %}
-    <nav class="navbar bg-success fixed-top" style="margin-bottom:70px;">
-      <div class="container-fluid"  >
-        <h5 style=" color: #5454c9; padding:8px; color:#000;" ><b><a href="/chat"><img src="static/img/left.png"  alt=""style="width:20px; margin-left:5px; height:20px;"  ><b> </a></h5>
-          <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}' >
-            {{form.hidden_tag()}}
-          
-            <input class="form-control "style="width:150px;" type="search" name='searched' placeholder="Search" aria-label="Search">
-            <button class="btn" style="color: #fff;  background: #631AAC;   border: none;"type="submit" >Search</button>
-              </form>
-           </a></h5>
-      </div>
-    </nav>
 
+<!--{{searched}}--> 
+
+
+
+<div class="row">
+  {%if posts|length < 1 %}
+  
+  <h4 class="text-muted">No result for the {{searched}}</h4>
+  {%else %}
   <div class="row">
-    {%if posts|length < 1 %}
-    
-    <h4 class="text-muted">No result for the {{searched}}</h4>
-    {%else %}
-
-
-
-    <div class="container" style="+border-radius:10px 0 0 150px; padding: 10px; margin-bottom:70px;">
-
+  {% for post in posts %}
+  <div class="col-md-3 col-6">
+        <div class="department-item" data-aos="fade-down-left">
+          <a href="{{url_for("viewlevel", userid=post.id)}}" style="text-decoration: none; color: #992621;">
+            <h5 class="names" style="font-size:16px;">{{ post.name }}</h5>
+            <td>{{ post.schools }}</td><br>
+            <td>{{ post.year }}</td>
+            <td>{{ post.level }}</td>
+          </a>
+        </div>
+        </div>
   
-
-  
-    
-    
-      <h6 class="text-muted" style="color: #000; text-align:left;  ">Enjoy the new experience of chatting with global friends</h6>
-      <h6 style="color:#000; text-align:left; margin-left:6px; "><b> <img src="static/img/check.png" style="width:10px;"></b> <span class="text-muted" style="font-size:13px;">29   online.</span> </h6>
-      
-      {% for post in posts %} 
-      <h6 class="text-muted">{{current_user.name}}</h6>
-      <h6  style="color: #000; background-color:rgb(72, 239, 164); overflow:hidden; text-align:left;   margin-top:10px;  padding:10px; width:100%
-      ; border-radius:15px 15px 0 15px; "  >{{post.extra}}</h6>
-      <h6 style="color:#000; text-align:right; margin-left:6px; "> <span class="text-muted" style="font-size:13px;">Delievered.</span> </h6>
-      
-      {% endfor %}
-    
-      
-  </div>
-
-        
-        
-
-          {%endif%}
-            
-
-  </div>
-</div>
+      {% endfor %} 
+      </div> 
+    {%endif%}
+    </div>
       </div>
-      
-  </div>
- 
-</div>
-
-
-</div>
     {% endblock body %}

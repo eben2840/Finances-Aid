@@ -68,48 +68,59 @@
   <!-- 
     - #HEADER
   -->
-
   <header class="header" data-header>
     <div class="container">
 
       <a href="#" class="logo">
-
-       
-        <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" width="100" height="30" alt="">
-
+        <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" width="148" height="38" alt="Fasteat home">
       </a>
 
       <nav class="navbar" data-navbar>
         <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-        <a href="/post" style="color:#000;"><img src="static/img/app.png" style="width:25px; margin-left:20px;"></a>
- 
-         
-                
-         <a href="votes" style="text-decoration:none; color:#000;"><img src="static/img/pp.png" style="width:25px; margin-right:25px;"></a> 
-           </button>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
 
+        <a href="#" class="logo">
+          <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" width="148" height="38" alt="Fasteat home">
+        </a>
 
-       
-     </nav>
+        <ul class="navbar-list">
 
-      <div class="header-action" style="display:flex;">
-        
-        
-            <h5>  <a href="votes" style="text-decoration:none; color:#000;"><i class="fas fa-person" style="color:#000; font-size:20px;"></i></a> </h5>
-        <!--
-        <a href="upload.html" class="btn btn-primary has-after">Upload</a>-->
+          <li class="navbar-item">
+            <a href="/" class="navbar-link" data-nav-link>Dashboard</a>
+          </li>
+
+          <li class="navbar-item active">
+            <a href="/news" class="navbar-link" data-nav-link>News Feed</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="/bill" class="navbar-link" data-nav-link>Bills</a>
+          </li>
+
+         <!-- <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>Contacts</a>
+          </li>-->
+
+        </ul>
+      </nav>
+
+      <div class="header-action">
+       <!-- <button class="cart-btn" aria-label="cart">
+          <ion-icon name="bag" aria-hidden="true"></ion-icon>
+        </button>-->
+
+        <a href="#" class="btn btn-primary has-after mb-3">Support</a>
       </div>
 
-      <!--<button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
         <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-      </button>-->
+      </button>
 
       <div class="overlay" data-overlay data-nav-toggler></div>
 
     </div>
-    
   </header>
-
 
 
 
@@ -118,11 +129,13 @@
     <div class="containe" style="margin-top:80px; background-color:#772620; height:300px; padding:20px;">
     <div class="container">
       <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
-      <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px; padding-bottom: 20px;" >
-      <input type="text"
-          class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for ID Number" style="width:85%; padding:10px; border: none; " >
-          <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-    </form>
+        <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}'style="margin-top:20px;" >
+          
+        
+          <input class="input-field my-0 my-lg-0 mt-1 space " type="search" name='searched' placeholder="Search for course" aria-label="Search" style="">
+          <button class="btn btn-secondary has-after" type="submit" > <i class="fa fa-search" aria-hidden="true"></i> </button>
+            
+        </form>
   </div>
   </div>
     
@@ -142,12 +155,7 @@
         <div class="modal-dialog modal-dialog-centered" >
           <div class="modal-content" style="border-radius:20px;">
             
-           
-              <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px;width:2000px; padding-bottom: 20px; border-radius:20px;" >
-                <input type="text"
-                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for your prescriptions" style="width:700px; padding:15px;  border: none; " >
-                    <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-              </form>
+            
           
             <!--<div class="modal-footer">
               <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
@@ -172,12 +180,12 @@
 {% endwith %}
 
 <span class="" style="font-size:20px; margin-top:50px;">
-  Choose School:
+  Choose Course:
 </span>
 
 
 <select class="btn btn-secondary" id="schoolFilter" style="padding:15px; margin-bottom:20px;">
-  <option value="all">--All Schools--</option>
+  <option value="all">--All Course--</option>
   <option value="Nursing">"Nursing"</option>
   <option value="ECONOMICS">    "ECONOMICS"</option>
     <option value="PUBLIC HEALTH">        "PUBLIC HEALTH"</option>
@@ -210,34 +218,33 @@
 </select>
 
 
-<span class="" style="font-size:20px; margin-top:50px;">
-  Choose Year:
-</span>
-<select class="btn btn-secondary" id="yearFilter" style="padding:15px; margin-bottom:20px;">
-<option value="all">All Years</option>
-<option value="2021">100</option>
-<option value="2022">200</option>
-<option value="2023">300</option>
-<option value="2023">400</option>
-</select>
-
     
   <div class="row">
     
 
-   
+   <!-- <img src="{{user.image_file}}" loading="lazy" style="object-fit: cover; width: 100%; height: 20vh; " alt="">
+        -->
 
     {%for user in users%} 
     
-    <div class="col-md-3 col-6" style="margin-top:50px;">
+    <div class="col-md-3 col-12" style=" border-radius:10px; ">
       <a style="text-decoration: none;" href="{{url_for("list", userid=user.id)}}">
-      <div class="card space" style="margin-bottom: 5vh; padding: 0; border: none; border-radius: 0 0 10px 10px;">
-          <img src="{{user.image_file}}" loading="lazy" style="object-fit: cover; width: 100%; height: 20vh; " alt="">
-          <div style="background-color:#772620; padding: 10px; ">  
-            <h6 style="color: white; font-size:15px;" >{{user.index}}</h6>
+      <div class="card space" style="margin-bottom: 3vh;border-radius:10px;  padding: 10px;  border-radius: 10px;">
+           <div style="background-color:#fff;#772620; border-radius:10px;  padding: 10px; ">  
+            <h6 style="color: black; font-size:20px;" ><b>{{user.index}}</b></h6>
             <div style="display: flex; justify-content: space-between;">
-              <h6 style="font-size: small; color:#fff;">  {{user.schools}}</h6>
-             <!-- <i class="fas fa-shopping-cart" style="color:#fff;"></i>-->
+              <h6 style="font-size: small;color: black; background-color:#f1c7c7; padding:5px; border-radius:7px;">  {{user.schools}}</h6>
+           <i class="fa fa-address-card" aria-hidden="true"></i>
+            </div>
+            <hr>
+            <div style="display: flex; justify-content: space-between;">
+              <h6 style="font-size: small;color: black; ">  School Fees</h6>
+             <p style=" color:green;">{{user.fees}}</p>
+            </div>
+            <hr>
+            <div style="display: flex; justify-content: space-between;">
+              <h6 style="font-size: small;color: black; ">  Debt</h6>
+             <p style=" color:red;"> -{{user.arrears}}</p>
             </div>
           </div>
       </div>
@@ -256,6 +263,51 @@
 
 
 
+  <footer>
+    <div class="container">
+      <div class="row">
+              <div class="col-lg-4">
+                  <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" alt="Central University Logo" class="logo">
+                  <address>
+                      <span class="fs-2"><b>Mission</b></span>
+                      We aim to provide transparent, efficient, and supportive financial solutions to empower students in managing their financial obligations effectively while promoting financial literacy and responsible financial decision-making within the university community.
+                     
+                  </address>
+                 
+                </div>
+    <div class="col-lg-4">
+      <ul>
+        <h4><b>Faculties</b></h4>
+          <li><a href="#">Pharmacy</a></li>
+          <li><a href="#">Law</a></li>
+          <li><a href="#">Medical Sciences</a></li>
+          <li><a href="#">Nursing and Midwifery</a></li>
+          <li><a href="#">Engineering & Technology</a></li>
+          <li><a href="#">Social Sciences</a></li>
+          <li><a href="#">Architecture and Design</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Graduate School</a></li>
+          <li><a href="#">CDPE</a></li>
+      </ul>
+  </div>
+              
+              <div class="col-lg-4">
+                  <h4><b>Useful Numbers</b></h4>
+                 
+                  <p>Main Phone: <a href="tel:+233303331850">+233 303 331 850</a></p>
+                  <p>Finances: <a href="tel:+233307020540">+233 307 020 540</a></p>
+                  <p>Whatsapp: <a href="tel:+233233331180">+233 233 331 180</a></p>
+                  <p>Email: <a href="mailto:academicdirector@central.edu.gh">academicdirector@central.edu.gh</a></p>
+              
+              </div>
+          </div>
+         
+        </div>
+        <div class="footer-bottom text-white" style="background-color:#772620;">
+          <p>&copy; Copyright <strong>Central University</strong>. All Rights Reserved</p>
+      </div>
+      </footer>
+      <script src="scripts.js"></script>
 
 
 

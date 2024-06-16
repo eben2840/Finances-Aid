@@ -7,7 +7,86 @@
  */
 
 
+ footer {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px 0;
+}
 
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  margin: 10px;
+}
+
+.logo {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+address {
+  font-style: normal;
+  margin-bottom: 10px;
+}
+
+.contact p, .footer-center ul, .footer-right ul {
+  margin: 5px 0;
+}
+
+.footer-center ul, .footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center ul li, .footer-right ul li {
+  margin-bottom: 5px;
+}
+
+.footer-center ul li a, .footer-right ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-center ul li a:hover, .footer-right ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #e0e0e0;
+}
+
+.social-media {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.social-media a {
+  margin: 0 5px;
+}
+
+.social-media img {
+  width: 24px;
+  height: 24px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.whatsapp-float img {
+  width: 50px;
+  height: 50px;
+}
 
 
 /*-----------------------------------*\

@@ -1,164 +1,8 @@
+{% extends 'layout.html' %}
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 
-    - primary meta tags
-  -->
-  <title></title>
-  <meta name="title" content="">
-  <meta name="description" content="">
-
-  <script src="static/css/index.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-<!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css"> 
-    <!-- Local Styles -->
-
-<!-- FontAwesomeKit -->
-    <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favico.svg" type="image/svg+xml">
-
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="static/assets/css/style.css">
-
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- 
-    - preload images
-  -->
-
-</head>
-
-<body>
-
-  <!-- 
-    - #PRELOADER
- < -->
-
-  <div class="loading-container" data-loading-container>
-    <div class="loading-circle"></div>
-  </div>
-</div>
-
-
-
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <a href="#" class="logo" style="display:flex;">
-
-       
-        <h6 style="margin-top:10px; font-size:20px;">CU - DP</h6><img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" style="width:100px;" alt="">
-
-      </a>
-
-      <nav class="navbar" data-navbar>
-        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-        <a href="/post" style="color:#000;"><img src="static/img/app.png" style="width:25px; margin-left:20px;"></a>
+{% block body %}
  
-         
-                
-         <a href="votes" style="text-decoration:none; color:#000;"><img src="static/img/pp.png" style="width:25px; margin-right:25px;"></a> 
-           </button>
 
-
-       
-     </nav>
-
-      <div class="header-action" style="display:flex;">
-        
-        
-            <h5>  <a href="votes" style="text-decoration:none; color:#000;"><i class="fas fa-person" style="color:#000; font-size:20px;"></i></a> </h5>
-      
-        <a href="ulogin" class="btn btn-primary has-after">Dashboard</a>
-      </div>
-
-    
-
-      <div class="overlay" data-overlay data-nav-toggler></div>
-
-    </div>
-    
-  </header>
-
-
-
-
-
-  <main>
-    <div class="containe" style="margin-top:80px; background-color:#772620; height:300px; padding:20px;">
-    <div class="container">
-      <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
-    
-        
-     <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px; padding-bottom: 20px;" >
-      <input type="text"
-          class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for ID Number" style="width:85%; padding:10px; border: none; " >
-          <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-    </form>
-  </div>
-  </div>
-    
- 
-    <div class="container">
-     <!-- <div class="card-meta-wrapper" style=" margin-top:20px;  display:flex; overflow:auto;">
-        <a href="/addstatus" class="card-meta" style="width:90px; padding:10px; width:800px; border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >MyPrescriptions</a>
-        <a href="#" class="card-meta" style="width:90px; padding:10px; width:800px; margin-left:30px;    border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >Categories</a>
-        <a href="#" class="card-meta" style="width:90px; padding:10px; width:800px; margin-left:30px;    border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Find Drugs</a>
-         </div>-->
-      <!--<img src="static/img/wencol3.png" style="width:100%; margin-top:30px; height:250px;object-fit:cover; border-radius:10px; box-shadow:0 0 30px 4px hsla(0, 0%, 0%, 0.05); margin-bottom:20px;"loading="lazy" alt="The Wilmington"
-                  class="w-100">-->
-      
-    <article>
-      
-      <div class="modal fade  modal-xl" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered" >
-          <div class="modal-content" style="border-radius:20px;">
-            
-           
-              <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px;width:2000px; padding-bottom: 20px; border-radius:20px;" >
-                <input type="text"
-                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for your prescriptions" style="width:700px; padding:15px;  border: none; " >
-                    <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-              </form>
-          
-            <!--<div class="modal-footer">
-              <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-            </div>-->
-          </div>
-        </div>
-      </div>
-      
-      </div>
-     
     <div class="container">
       {% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -174,13 +18,13 @@
 
 
     
-  <div class="row">
-    <div class="col-md-3 col-6" style="margin-top:50px;">
+  <div class="row" style="margin-top:50px;">
+    <div class="col-md-4 col-12" style=" border-radius:20px;">
       <a style="text-decoration: none;" href="/level">
-      <div class="card space" style="margin-bottom: 5vh; padding: 0; border: none; border-radius: 0 0 10px 10px;">
-          <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" loading="lazy" style="width: 100%; height: 100%; " alt="">
-          <div style="background-color:#772620; padding: 10px; ">  
-            <h6 style="color: white; font-size:15px;" >Level 100</h6>
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+          <img src="static/img/1.png" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+          <div style="background-color:#772620; border-radius:0 0 0px 0px; padding: 10px; ">  
+            <h6 style="color: white; font-size:20px;" >Level 100</h6>
             <!--<div style="display: flex; justify-content: space-between;">
               <h6 style="font-size: small; color:#fff;"> GHc</h6>
               <i class="fas fa-shopping-cart" style="color:#fff;"></i>
@@ -190,12 +34,14 @@
       </a>
     </div>
 
-    <div class="col-md-3 col-6" style="margin-top:50px;">
+   
+    <div class="col-md-4 col-12" style=" border-radius:20px;">
       <a style="text-decoration: none;" href="/level">
-      <div class="card space" style="margin-bottom: 5vh; padding: 0; border: none; border-radius: 0 0 10px 10px;">
-          <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" loading="lazy" style="width: 100%; height: 100%; " alt="">
-          <div style="background-color:#772620; padding: 10px; ">  
-            <h6 style="color: white; font-size:15px;" >Level 200</h6>
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+        <img src="static/img/2.png" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+         
+          <div style="background-color:#772620; border-radius:0; padding: 10px; ">  
+            <h6 style="color: white; font-size:20px;" >Level 200</h6>
             <!--<div style="display: flex; justify-content: space-between;">
               <h6 style="font-size: small; color:#fff;"> GHc</h6>
               <i class="fas fa-shopping-cart" style="color:#fff;"></i>
@@ -205,12 +51,13 @@
       </a>
     </div>
 
-    <div class="col-md-3 col-6" style="margin-top:50px;">
+    <div class="col-md-4 col-12" style=" border-radius:20px;">
       <a style="text-decoration: none;" href="/level">
-      <div class="card space" style="margin-bottom: 5vh; padding: 0; border: none; border-radius: 0 0 10px 10px;">
-          <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" loading="lazy" style="width: 100%; height: 100%; " alt="">
-          <div style="background-color:#772620; padding: 10px; ">  
-            <h6 style="color: white; font-size:15px;" >Level 300</h6>
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+        <img src="static/img/3.png" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+        
+          <div style="background-color:#772620; border-radius:0; padding: 10px; ">  
+            <h6 style="color: white; font-size:20px;" >Level 300</h6>
             <!--<div style="display: flex; justify-content: space-between;">
               <h6 style="font-size: small; color:#fff;"> GHc</h6>
               <i class="fas fa-shopping-cart" style="color:#fff;"></i>
@@ -220,21 +67,59 @@
       </a>
     </div>
 
-    <div class="col-md-3 col-6" style="margin-top:50px;">
-      <a style="text-decoration: none;" href="/level">
-      <div class="card space" style="margin-bottom: 5vh; padding: 0; border: none; border-radius: 0 0 10px 10px;">
-          <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" loading="lazy" style="width: 100%; height: 100%; " alt="">
-          <div style="background-color:#772620; padding: 10px; ">  
-            <h6 style="color: white; font-size:15px;" >Level 400</h6>
-            <!--<div style="display: flex; justify-content: space-between;">
-              <h6 style="font-size: small; color:#fff;"> GHc</h6>
-              <i class="fas fa-shopping-cart" style="color:#fff;"></i>
-            </div>-->
-          </div>
-      </div>
-      </a>
-    </div>
     
+    <div class="col-md-4 col-12" style=" border-radius:20px;">
+      <a style="text-decoration: none;" href="/level">
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+        <img src="static/img/4.png" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+       
+         
+          <div style="background-color:#772620; border-radius:0; padding: 10px; ">  
+            <h6 style="color: white; font-size:20px;" >Level 400</h6>
+            <!--<div style="display: flex; justify-content: space-between;">
+              <h6 style="font-size: small; color:#fff;"> GHc</h6>
+              <i class="fas fa-shopping-cart" style="color:#fff;"></i>
+            </div>-->
+          </div>
+      </div>
+      </a>
+    </div>
+
+
+    <div class="col-md-4 col-12" style=" border-radius:20px;">
+      <a style="text-decoration: none;" href="/level">
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+        <img src="static/img/5.png" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+       
+           
+          <div style="background-color:#772620; border-radius:0; padding: 10px; ">  
+            <h6 style="color: white; font-size:20px;" >Level 500</h6>
+            <!--<div style="display: flex; justify-content: space-between;">
+              <h6 style="font-size: small; color:#fff;"> GHc</h6>
+              <i class="fas fa-shopping-cart" style="color:#fff;"></i>
+            </div>-->
+          </div>
+      </div>
+      </a>
+    </div>
+
+
+    <div class="col-md-4 col-12" style=" border-radius:20px;">
+      <a style="text-decoration: none;" href="/level">
+      <div class="card space" style="margin-bottom: 5vh; padding: 0;  border-radius:10px;">
+        <img src="static/img/6.png" loading="lazy" style="width: 100%; height: 100%;  margin:auto; " alt="">
+        
+         
+          <div style="background-color:#772620; border-radius:0; padding: 10px; ">  
+            <h6 style="color: white; font-size:20px;" >Level 600</h6>
+            <!--<div style="display: flex; justify-content: space-between;">
+              <h6 style="font-size: small; color:#fff;"> GHc</h6>
+              <i class="fas fa-shopping-cart" style="color:#fff;"></i>
+            </div>-->
+          </div>
+      </div>
+      </a>
+    </div>
 
     
     </div>
@@ -242,82 +127,5 @@
   </div>
   
 
-    </article>
-  </main>
-
-
-
-
-
-
-  <!-- 
-    - custom js link
-  -->
-  <script src="static/assets/js/script.js"></script>
-
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-  
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
-  
-  <!-- <script defer src="//firebase/8.9.1/firebase-storage.js"></script> -->
-  
-
-
-  <script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyBPHDVrXV4nn_4agQgWFItDlS8z9cvq5zw",
-      authDomain: "centralalumni.firebaseapp.com",
-      projectId: "centralalumni",
-      storageBucket: "centralalumni.appspot.com",
-      messagingSenderId: "270504690849",
-      appId: "1:270504690849:web:b03ee12ab92e157196dce0",
-      measurementId: "G-9T21K58F10"
-    };
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
-    
-
-    
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
-
-</body>
-</html>
-
-
-
-
-
+ 
+    {%endblock body%}
