@@ -77,6 +77,11 @@
             </ul>
         </div>-->
     </div>
+    <div class="tabContainer">
+        <a href="{{url_for('userlogout')}}"><div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; text-decoration:none; color:#000;"><i class="fas fa-log-out"></i><span>Logout Admin</span></div></a>
+        <div class="tabButtonBorder"></div>
+    
+    </div>
 </aside>
 <main class="admin__main">
     {% with messages = get_flashed_messages() %}
@@ -91,7 +96,7 @@
     {% endif %}
     {% endwith %}
     <div class="upgradeAccount">
-        <img class="person girl" src="static/images/me.png" style="width:200px; height:200px;" alt="">
+        <img class="person girl" src="https://www.selligent.com/wp-content/uploads/2021/08/Selligent-Marketing-Cloud-Homepage-Hero.png" style="width:300px; height:200px;" alt="">
         
         <span class="upgradeAccount__text__header" style="font-size:30px;">Welcome, <span><b>{{current_user.name}}</b></span></span>
         <span class="upgradeAccount__text__description">Make whole management even more effective and enjoyable. Upgrade your profile to use the service to the best advantage. Let us help you enjoy more of what you do.</span>

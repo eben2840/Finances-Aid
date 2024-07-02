@@ -139,7 +139,7 @@ class Student(db.Model,UserMixin):
     index= db.Column(db.String()  )
     guardian= db.Column(db.String()  )
     def __repr__(self):
-        return f"User('{self.id}', {self.fullname}"
+        return f"User('{self.id}', {self.schools}"
     
     
 class User(db.Model,UserMixin):
@@ -441,7 +441,6 @@ def level():
  
 @app.route('/bill')
 def bill():  
-    
     name=Person.query.order_by(Person.id.desc()).all()
     bill=Program.query.order_by(Program.id.desc()).all()
     users=User.query.order_by(User.id.desc()).all()
@@ -457,13 +456,10 @@ def news():
     return render_template("news.html", users=users)
  
 @app.route('/profile')
-def profile():  
-    name=Person.query.order_by(Person.id.desc()).all()
-    users=User.query.order_by(User.id.desc()).all()
-    user=Postme.query.order_by(Postme.id.desc()).all()
-    story=Storypost.query.order_by(Storypost.id.desc()).all()
+def profile():
+    student=Student.query.order_by(Student.id.desc()).all()
     print(current_user)
-    return render_template("profile.html", name=name, users=users,user=user,current_user=current_user, story=story)
+    return render_template("profile.html", student=student)
  
 
 @app.route('/main1')
@@ -482,20 +478,28 @@ def newdash():
     return render_template("newdash.html")
 
 
+@app.context_processor
+def base():
+    form=Search()
+    return dict(form=form)
+
 @app.route('/search', methods=[ 'POST'])
 def search():
-    form= Search() # Initialize postsearched with an empty string or a suitable default value
-
+    form= Search() 
+    # postsearched = None  # Initialize postsearched outside the if block
+    # posts = []
     if request.method == 'POST': 
-        posts =User.query
+        posts =Student.query
         if form.validate_on_submit():
-            postsearched=form.searched.data
-            posts =posts.filter(User.index.like('%'+ postsearched + '%') )
-            posts =posts.order_by(User.index).all() 
-            flash("You searched for "+ postsearched, "success")  
+            post.searched=form.searched.data
+            posts =posts.filter(Student.index.like('%'+ post.searched + '%') )
+            posts =posts.order_by(Student.schools).all() 
+            flash("You searched for "+ post.searched, "success")  
             print(posts)   
-            print(current_user)   
-    return render_template("search.html", form=form, searched = postsearched, posts=posts,current_user=current_user)
+            print(current_user)  
+
+ 
+    return render_template("search.html", form=form, searched = post.searched, posts=posts,current_user=current_user)
 
 
 
@@ -713,16 +717,39 @@ def updateuser(id):
 #delete route
 @app.route("/delete/<int:id>")
 def delete(id):
+    delete=Program.query.get_or_404(id)
+    try:
+            db.session.delete(delete)
+            db.session.commit()
+            flash('Bill Successfully deleted')
+            return redirect(url_for('bill')) 
+    except: 
+        return "Fuck wrong with youuuuuuuuuu"
+    
+@app.route("/deleteusers/<int:id>")
+def deleteusers(id):
+    delete=Student.query.get_or_404(id)
+    try:
+            db.session.delete(delete)
+            db.session.commit()
+            flash('User Successfully deleted')
+            return redirect(url_for('level')) 
+    except: 
+        return "Fuck wrong with youuuuuuuuuu"
+    
+@app.route("/deletenews/<int:id>")
+def deletenews(id):
     delete=User.query.get_or_404(id)
     try:
             db.session.delete(delete)
             db.session.commit()
-            return redirect(url_for('list')) 
+            flash('User Successfully deleted')
+            return redirect(url_for('news')) 
     except: 
-        return "errrrrorrr"
+        return "Fuck wrong with youuuuuuuuuu"
    
    
-@app.route('/usersignup', methods=['POST','GET'])
+@app.route('/adminsignupcu', methods=['POST','GET'])
 def usersignup():
     form = Registration()
     print(form.faculty.data)

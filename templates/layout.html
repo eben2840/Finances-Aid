@@ -109,7 +109,7 @@
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
         </button>-->
 
-        <a href="#" class="btn btn-primary has-after">Support</a>
+        <a href="/newdash" class="btn btn-primary has-after">Dashboard</a>
       </div>
 
       <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
@@ -131,10 +131,13 @@
       <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
     
         
-     <form class="form-inline my-2 my-lg-0 mt-2 space" style="display: flex; padding-top: 20px; padding-bottom: 20px;" >
-      <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Search for ID Number" style="width:85%; padding:10px;  " >
-          <i class="fas fa-search" style="font-size:15px; margin-top:15px;  margin-left:20px;"></i>
-    </form>
+        <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}'style="margin-top:20px;" >
+          {{form.hidden_tag()}}
+         
+           <input class="input-field my-0 my-lg-0 mt-1 space " type="search" name='searched' placeholder="Search for course" aria-label="Search" style="">
+           <button class="btn btn-secondary has-after" type="submit" > <i class="fa fa-search" aria-hidden="true"></i> </button>
+             
+         </form>
     
   </div>
   </div>

@@ -43,7 +43,7 @@ class Registration(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     phone= StringField('phone')
     password = PasswordField('password')
-    faculty = SelectField('faculty',  choices=[('Campus','Campus'),('CU', 'CU'), ('Legon','Legon'), ('KNUST','KNUST'), ('UPSA', 'UPSA')], default=None )
+    faculty = SelectField('faculty',  choices=[('tag','tag'),('admin', 'admin'), ('superadmin','superadmin')], default=None )
    
     submit = SubmitField('SignUp')  
     # el4 = SelectField('el4', default='None', choices=[(user.lastname, user.lastname) for user in Person.query.all()])  
@@ -52,7 +52,7 @@ class Registration(FlaskForm):
 #forms
 class Adduser(FlaskForm):
     guardian= StringField('guardian')
-    arrears= StringField('arrears')
+    arrears= SelectField('faculty',  choices=[('tag','tag'),('N0.1', 'N0.1'), ('N0.2','N0.2')], default=None )
     image_file = StringField('image_file')
     submit = SubmitField('submit') 
     
