@@ -110,7 +110,7 @@
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
         </button>-->
 
-        <a href="/newdash" class="btn btn-primary has-after">ADM</a>
+        <a href="/newdash" class="btn btn-primary has-after mb-3">ADM</a>
       </div>
 
       <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
@@ -124,11 +124,22 @@
 
 
 
-  <main>
-    
-    
-    
 
+  <main>
+    <div class="containe" style="margin-top:80px; background-color:#772620; height:300px; padding:20px;">
+    <div class="container">
+      <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
+        <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}'style="margin-top:20px;" >
+         {{form.hidden_tag()}}
+        
+          <input class="input-field my-0 my-lg-0 mt-1 space " type="search" name='searched' placeholder="Search for course" aria-label="Search" style="">
+          <button class="btn btn-secondary has-after" type="submit" > <i class="fa fa-search" aria-hidden="true"></i> </button>
+            
+        </form>
+  </div>
+  </div>
+    
+ 
     <div class="container">
      <!-- <div class="card-meta-wrapper" style=" margin-top:20px;  display:flex; overflow:auto;">
         <a href="/addstatus" class="card-meta" style="width:90px; padding:10px; width:800px; border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >MyPrescriptions</a>
@@ -156,17 +167,20 @@
       </div>
      
     <div class="container">
-     
-
-
-<span class="" style="font-size:25px; color:#000; margin-top:100px;">
-  <b>Semester Bill</b>
-</span>
-<h6 style="font-size: small; color:#00;">Your semester bill from the Finances Department</h6>
-
+      {% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success mb-3" role="alert">
+        {{ message }} 
+        
+    </div>
+    
+    {% endfor %}
+{% endif %}
+{% endwith %}
 
 <span class="" style="font-size:20px; margin-top:50px;">
-  Choose Choose:
+  Choose Course:
 </span>
 
 
@@ -203,56 +217,41 @@
                 <option value="MGT & P.A.">    "MGT & P.A. "</option>
 </select>
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-success mb-3" role="alert">
-        {{ message }} 
+
+    
+ 
+      <div class="row" style="justify-content: space-between; ">
+        {% for user in hundred %}  
         
-    </div>
+        <div class="col-md-3 col-12" style=" border-radius:10px; ">
+          <a style="text-decoration: none;" href="">
+          <div class="card space" style="margin-bottom: 3vh;border-radius:10px;  padding: 10px;  border-radius: 10px;">
+               <div style="background-color:#fff;#772620; border-radius:10px;  padding: 10px; ">  
+                <h6 style="color: black; font-size:20px;" ><b>{{user.index}}</b></h6>
+                <div style="display: flex; justify-content: space-between;">
+                  <h6 style="font-size: small;color: black; background-color:#f1c7c7; padding:5px; border-radius:7px;">  {{user.schools}}</h6>
+               <i class="fa fa-address-card" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div style="display: flex; justify-content: space-between;">
+                  <h6 style="font-size: small;color: black; ">  School Fees</h6>
+                 <p style=" color:green;">GH₵ {{user.fees}}</p>
+                </div>
+                <hr>
+                <div style="display: flex; justify-content: space-between;">
+                  <h6 style="font-size: small;color: black; ">  Debt</h6>
+                 <p style=" color:red;">GH₵ -{{user.arrears}}</p>
+                </div>
+                
+                
+              </div>
+             
     
-    {% endfor %}
-{% endif %}
-{% endwith %}
-    
-  <div class="row">
-    <p class="fs-3">Download Semester Fees PDF <a  onclick="window.print()" class="download-link text-primary">Print Page</a></p>
-   <!-- <img src="{{user.image_file}}" loading="lazy" style="object-fit: cover; width: 100%; height: 20vh; " alt="">
-        -->
-
-
-
-      
-    {%for bill in bill%} 
-    
-    <div class="col-lg-12 col-12" style=" border-radius:10px; ">
-      <a style="text-decoration: none;" href="">
-      <div class="card space" style="margin-bottom: 3vh;border-radius:10px;  padding: 10px;  border-radius: 10px;">
-           <div style="background-color:#fff;#772620; border-radius:10px;  padding: 10px; ">  
-            <h6 style="color: black; font-size:20px;" ><b>{{bill.school}}</b></h6>
-            <div style="display: flex; justify-content: space-between;">
-              <h6 style="font-size: small;color: black; background-color:#f1c7c7; padding:5px; border-radius:7px;">Level  {{bill.name}}</h6>
-              
-              <h6 style="font-size: small;color: black; ">  Required Fees</h6>
-            </div>
-            
-            {% if current_user.faculty == 'admin'%}
-            <a href="/delete/{{bill.id}}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
-            {% endif%}
-
-            <div style="display: flex; justify-content: space-between;">
-              <h6 style="font-size:medium;color: black; ">  </h6>
-             <p style=" color:green;">GH₵ {{bill.department}}</p>
-            </div>
-            <hr>
-           
           </div>
-      </div>
-      </a>
-    </div>
-
-    {% endfor %}
-    
+          </a>
+        </div>
+        {% endfor %}
+        
     </div>
     
   </div>
@@ -260,7 +259,6 @@
 
     </article>
   </main>
-
 
 
 
@@ -309,6 +307,7 @@
       </div>
       </footer>
       <script src="scripts.js"></script>
+
 
 
   <!-- 

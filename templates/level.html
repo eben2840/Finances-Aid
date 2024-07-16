@@ -110,7 +110,7 @@
           <ion-icon name="bag" aria-hidden="true"></ion-icon>
         </button>-->
 
-        <a href="#" class="btn btn-primary has-after mb-3">Support</a>
+        <a href="/newdash" class="btn btn-primary has-after mb-3">ADM</a>
       </div>
 
       <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
@@ -246,9 +246,7 @@
              <p style=" color:red;">GH₵ -{{user.arrears}}</p>
             </div>
             
-            {% if current_user.faculty == 'admin'%}
-            <a href="/deleteusers/{{user.id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
-            {% endif%}
+            
           </div>
          
 

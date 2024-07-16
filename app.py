@@ -1,3 +1,5 @@
+import csv
+import io
 import urllib.request, urllib.parse
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages,send_file
@@ -218,31 +220,44 @@ def dashboard():
 def getstudent():
     return render_template('getstudent.html')
 
+
+
+
 @app.route('/addbill', methods=['GET', 'POST'])
 @login_required
 def addbill():
-    print("Entering addbill function")
-    form=Programfield()
-    print("Form object created:", form)
-    if form.validate_on_submit():
-        print("Form is valid")
-        school = form.school.data
-        department = form.department.data
-        name = form.name.data
-        print("Form data:", school, department, name)
-        users=Program(  
-                   school=school,  
-                   department=department,  
-                   name=name,    
-                )
-        db.session.add(users)
-        db.session.commit()
-        print("Added new bill to database")
-        flash("You just added a new bill", "success")
-        return redirect('newdash')
-    print("Form is not valid")
-    print("Form errors:", form.errors)
-    return render_template('addbill.html', form=form)
+    if request.method == 'POST':
+        print("Method is POST")
+        if 'csv_file' in request.files:
+            print("CSV file found")
+            csv_file = request.files['csv_file']
+            if csv_file and csv_file.filename.endswith('.csv'):
+                print("CSV file is valid")
+                stream = io.StringIO(csv_file.stream.read().decode("UTF8"), newline=None)
+                csv_input = csv.reader(stream)
+                next(csv_input)  # Skip the header row
+                for row in csv_input:
+                    print("Processing row: ", row)
+                    if len(row) > 6:
+                        print("Error: Row {} doesn't have enough columns.".format(row), 'danger')
+                        continue  # Skip this row if it doesn't have enough columns
+                    
+                    new_user = Program(
+                        school=row[0],
+                        department=row[1],
+                        name=row[2]
+                    )
+                    db.session.add(new_user)
+                db.session.commit()
+                print("Bill added successfully from CSV file")
+                flash('Bill added successfully from CSV file', 'success')
+                return redirect(url_for('newdash'))
+
+        print("Please upload a valid CSV file.")
+        flash('Please upload a valid CSV file.', 'danger')
+        return redirect(url_for('addbill'))
+    print("Rendering addAlumni.html")
+    return render_template('addbill.html')
 
 @app.route('/votes')
 def votes():
@@ -312,28 +327,68 @@ def addpost():
     print(form.errors)
     return render_template("addpost.html", form=form)
 
-
-
 @app.route('/addalumni', methods=['GET', 'POST'])
 @login_required
 def addalumni():
-    form=Addstudent()
-    if form.validate_on_submit():
+    print("addstaff function started")
+    if request.method == 'POST':
+        print("Method is POST")
+        if 'csv_file' in request.files:
+            print("CSV file found")
+            csv_file = request.files['csv_file']
+            if csv_file and csv_file.filename.endswith('.csv'):
+                print("CSV file is valid")
+                stream = io.StringIO(csv_file.stream.read().decode("UTF8"), newline=None)
+                csv_input = csv.reader(stream)
+                next(csv_input)  # Skip the header row
+                for row in csv_input:
+                    print("Processing row: ", row)
+                    if len(row) < 6:
+                        print("Error: Row {} doesn't have enough columns.".format(row), 'danger')
+                        continue  # Skip this row if it doesn't have enough columns
+                    
+                    new_user = Student(
+                        schools=row[0],
+                        year=  row[1],
+                        fees= row[2],
+                        index= row[3],
+                        arrears= row[4],
+                        guardian= row[5]
+                    )
+                    db.session.add(new_user)
+                db.session.commit()
+                print("Student added successfully from CSV file")
+                flash('Student added successfully from CSV file', 'success')
+                return redirect(url_for('profile'))
+
+        print("Please upload a valid CSV file.")
+        flash('Please upload a valid CSV file.', 'danger')
+        return redirect(url_for('addstaff'))
+
+    print("Rendering addAlumni.html")
+    return render_template('addAlumni.html')
+
+# @app.route('/addalumni', methods=['GET', 'POST'])
+# @login_required
+# def addalumni():
+#     form=Addstudent()
+#     if form.validate_on_submit():
   
-            new=Student(schools=form.schools.data,
-                   year=form.year.data,  
-                   fees=form.fees.data,  
-                   index=form.index.data,  
-                   arrears=form.arrears.data,  
-                   guardian=form.guardian.data,  
-                  )
+#             new=Student(
+#                 schools=form.schools.data,
+#                    year=form.year.data,  
+#                    fees=form.fees.data,  
+#                    index=form.index.data,  
+#                    arrears=form.arrears.data,  
+#                    guardian=form.guardian.data,  
+#                   )
        
-            db.session.add(new)
-            db.session.commit()
-            flash("New Student added", "success")
-            return redirect('/newdash')
-    print(form.errors)
-    return render_template("addAlumni.html", form=form)
+#             db.session.add(new)
+#             db.session.commit()
+#             flash("New Student added", "success")
+#             return redirect('/newdash')
+#     print(form.errors)
+#     return render_template("addAlumni.html", form=form)
 
 
 
@@ -455,11 +510,23 @@ def news():
     users=User.query.order_by(User.id.desc()).all()
     return render_template("news.html", users=users)
  
+@app.route('/newss')
+def newss():
+    student=User.query.order_by(User.id.desc()).all()
+    print(current_user)
+    return render_template("newss.html", student=student)
+
 @app.route('/profile')
 def profile():
     student=Student.query.order_by(Student.id.desc()).all()
     print(current_user)
     return render_template("profile.html", student=student)
+
+@app.route('/bills')
+def bills():
+    student=Program.query.order_by(Program.id.desc()).all()
+    print(current_user)
+    return render_template("bills.html", student=student)
  
 
 @app.route('/main1')
@@ -724,7 +791,7 @@ def delete(id):
             flash('Bill Successfully deleted')
             return redirect(url_for('bill')) 
     except: 
-        return "Fuck wrong with youuuuuuuuuu"
+        return "Sorry try again"
     
 @app.route("/deleteusers/<int:id>")
 def deleteusers(id):
@@ -733,9 +800,9 @@ def deleteusers(id):
             db.session.delete(delete)
             db.session.commit()
             flash('User Successfully deleted')
-            return redirect(url_for('level')) 
+            return redirect(url_for('profile')) 
     except: 
-        return "Fuck wrong with youuuuuuuuuu"
+        return "Sorry try again"
     
 @app.route("/deletenews/<int:id>")
 def deletenews(id):
@@ -746,7 +813,7 @@ def deletenews(id):
             flash('User Successfully deleted')
             return redirect(url_for('news')) 
     except: 
-        return "Fuck wrong with youuuuuuuuuu"
+        return "Sorry try again"
    
    
 @app.route('/adminsignupcu', methods=['POST','GET'])
@@ -838,8 +905,44 @@ def userbase():
 @app.route('/level100', methods=['GET', 'POST'])
 def level100():
     # sendtelegram("New User on Pasco Portal level 100")
-    # hundred = Course.query.filter_by(level='100').all()
-    return render_template('level100.html')
+    hundred = Student.query.filter_by(year='100').all()
+    return render_template('level100.html', hundred=hundred)
+
+
+@app.route('/level200', methods=['GET', 'POST'])
+def level200():
+    # sendtelegram("New User on Pasco Portal level 100")
+    hundred = Student.query.filter_by(year='200').all()
+    return render_template('level200.html', hundred=hundred)
+
+
+@app.route('/level300', methods=['GET', 'POST'])
+def level300():
+    # sendtelegram("New User on Pasco Portal level 100")
+    hundred = Student.query.filter_by(year='300').all()
+    return render_template('level300.html', hundred=hundred)
+
+
+@app.route('/level400', methods=['GET', 'POST'])
+def level400():
+    # sendtelegram("New User on Pasco Portal level 100")
+    hundred = Student.query.filter_by(year='400').all()
+    return render_template('level400.html', hundred=hundred)
+
+
+@app.route('/level500', methods=['GET', 'POST'])
+def level500():
+    # sendtelegram("New User on Pasco Portal level 100")
+    hundred = Student.query.filter_by(year='500').all()
+    return render_template('level500.html', hundred=hundred)
+
+
+@app.route('/level600', methods=['GET', 'POST'])
+def level600():
+    # sendtelegram("New User on Pasco Portal level 100")
+    hundred = Student.query.filter_by(year='600').all()
+    return render_template('level600.html', hundred=hundred)
+
 
 
 @app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])
@@ -859,6 +962,6 @@ def userinformation(userid):
 
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=7000, debug=True)
     
     

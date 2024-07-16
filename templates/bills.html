@@ -18,7 +18,7 @@
             </ul>
         </div>-->
         <div class="tabContainer">
-            <a href="/newdash"> <div class="tabButton" style="background-color: #fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-home"></i><span>Dashboard</span></div></a>
+            <a href="/newdash"> <div class="tabButton" style="background-color:#772620;  padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-home"></i><span>Dashboard</span></div></a>
             <div class="tabButtonBorder"></div>
             <!--<div class="panel">
                 <ul>
@@ -30,7 +30,7 @@
             </div>-->
         </div>
     <div class="tabContainer">
-        <a href="/profile"> <div class="tabButton" style="background-color:#772620; padding:15px; border-radius:5px; color:#fff;"><i class="fas fa-users"></i><span>All Students</span></div></a>
+        <a href="/profile"> <div class="tabButton" style="background-color:#fff; padding:15px; border-radius:5px; color:#000;"><i class="fas fa-users"></i><span>All Students</span></div></a>
         <div class="tabButtonBorder"></div>
         <!--<div class="panel">
             <ul>
@@ -83,26 +83,22 @@
 <main class="admin__main">
   
     <div class="searchResults">
-
-        {%for user in student%} 
+        {%for user in student%}
         <div class="col-md-12 col-12" style=" border-radius:10px; ">
             <a style="text-decoration: none;" href="">
             <div class="card space" style="margin-bottom: 3vh;border-radius:10px;  padding: 10px;  border-radius: 10px;">
                  <div style="background-color:#fff;#772620; border-radius:10px;  padding: 10px; ">  
-                  <h6 style="color: black; font-size:20px;" ><b>{{user.index}}</b></h6>
+                  <h6 style="color: black; font-size:20px;" ><b>{{user.school}}</b></h6>
+                  
+                  <hr>
                   <div style="display: flex; justify-content: space-between;">
-                    <h6 style="font-size: small;color: black; background-color:#f1c7c7; padding:5px; border-radius:7px;">  {{user.schools}}</h6>
-                 <i class="fa fa-address-card" aria-hidden="true"></i>
+                    <h5 style="color: black; ">  <b>Level</b></h5>
+                   <p style=" color:green;">{{user.name}}</p>
                   </div>
                   <hr>
                   <div style="display: flex; justify-content: space-between;">
-                    <h6 style="font-size: small;color: black; ">  School Fees</h6>
-                   <p style=" color:green;">GH₵ {{user.fees}}</p>
-                  </div>
-                  <hr>
-                  <div style="display: flex; justify-content: space-between;">
-                    <h6 style="font-size: small;color: black; ">  Debt</h6>
-                   <p style=" color:red;">GH₵ -{{user.arrears}}</p>
+                    <h5 style="color: black; "><b> School Fees</b></h5>
+                   <p style=" color:green;">GHc {{user.department}}</p>
                   </div>
                   
                 

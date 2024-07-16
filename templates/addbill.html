@@ -86,46 +86,17 @@
        
 
 
-      <form action='' method="post" >
-        {{form.hidden_tag()}}
-     
-       
-       
-     
-      <label for="surname">Year / Level</label>
-      {{form.name(class="form-control mb-4")}}
-      
-      
-     
-   
-      <label for="maiden_name">Course / Program</label>
-      {{form.school(class="form-control mb-4")}}
-     
+      <form action="{{ url_for('addbill') }}" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="container" style="background-color:#fff; padding:30px;">
+            <h6 class="text-muted">Upload CSV File (Required)</h6>
+            <input name="csv_file" type="file" class="input-field my-3 my-lg-3 mt-2 space" style="padding:15px; border:1px solid #2E2D7F; border-radius:15px; width:100%;box-shadow: var(--shadow-1);" accept=".csv">
+            <div id="submitButton">
+                <input type="submit" value="Upload CSV" class="input-field my-3 my-lg-3 mt-2 space" style="padding:15px;background-color:blue; color:#fff; border:1px solid #2E2D7F; border-radius:15px; width:100%;box-shadow: var(--shadow-1);">
+            </div>
+        </div>
+    </form>
 
-      <label for="maiden_name">Require Fees</label>
-      <input type="number" class="form-control" name="department" placeholder="Enter Fee"><br>
-   
-
-      
-      <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; width:100%; background-color: #772620;" type="submit" id="submitButton"><h6 style="font-size:15px;">Add Student</h6></button>
-                
-      
-        
-      
-        
-       
-      
-      
-       
-       
-      
-      
-      
-      
-      
-       
-
-        </form>
 </main>
   
 

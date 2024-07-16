@@ -84,56 +84,18 @@
       <h6 style="margin-top:20px; font-size:30px;">Add Student:</h6>
       
         
-       
+      <form action="{{ url_for('addalumni') }}" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="container" style="background-color:#fff; padding:30px;">
+            <h6 class="text-muted">Upload CSV File (Required)</h6>
+            <input name="csv_file" type="file" class="input-field my-3 my-lg-3 mt-2 space" style="padding:15px; border:1px solid #2E2D7F; border-radius:15px; width:100%;box-shadow: var(--shadow-1);" accept=".csv">
+            <div id="submitButton">
+                <input type="submit" value="Upload CSV" class="input-field my-3 my-lg-3 mt-2 space" style="padding:15px;background-color:blue; color:#fff; border:1px solid #2E2D7F; border-radius:15px; width:100%;box-shadow: var(--shadow-1);">
+            </div>
+        </div>
+    </form>
 
 
-      <form action='' method="post" enctype="multipart/form-data">
-        {{form.hidden_tag()}}
-     
-       
-     
-      <label for="surname">Name:</label>
-      <input type="text" class="form-control" name="guardian" placeholder="Name" ><br>
- 
-      
-      <label for="surname">Student ID:</label>
-      <input type="text" class="form-control" name="index" placeholder="Student ID" ><br>
-
-      <label for="school">Course:</label>
-      {{form.schools( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
-
-    
-      <label for="maiden_name">Level:</label>
-      {{form.year( class="form-control", type="number", placeholder="",id="floatingInput", required="required")}}
-      
-      
-      <label for="maiden_name">Fees</label>
-      <input type="number" class="form-control" name="fees" placeholder="Fees"><br>
-      
-      <label for="maiden_name">Arreas</label>
-      <input type="number" class="form-control" name="arrears" placeholder="Arreas"><br>
-      
-
-   
-      
-      <button class="btn btn-primary has-after" style="text-decoration:none;padding:10px;  border-radius:5px; color:#fff;border:none; width:100%; background-color: #772620;" type="submit" id="submitButton"><h6 style="font-size:15px;">Add Student</h6></button>
-                
-      
-   
-        
-       
-      
-      
-       
-       
-      
-      
-      
-      
-      
-       
-
-        </form>
 </main>
   
 
