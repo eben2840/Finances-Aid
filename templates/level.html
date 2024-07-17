@@ -14,7 +14,7 @@
   <meta name="title" content="">
   <meta name="description" content="">
 
-  <script src="static/css/index.js"></script>
+  <script src="/static/css/index.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
     <!-- Google Fonts -->
@@ -36,7 +36,7 @@
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="static/assets/css/style.css">
+  <link rel="stylesheet" href="/static/assets/css/style.css">
 
   <!-- 
     - google font link
@@ -126,28 +126,10 @@
 
 
   <main>
-    <div class="containe" style="margin-top:80px; background-color:#772620; height:300px; padding:20px;">
-    <div class="container">
-      <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
-        <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}'style="margin-top:20px;" >
-         {{form.hidden_tag()}}
-        
-          <input class="input-field my-0 my-lg-0 mt-1 space " type="search" name='searched' placeholder="Search for course" aria-label="Search" style="">
-          <button class="btn btn-secondary has-after" type="submit" > <i class="fa fa-search" aria-hidden="true"></i> </button>
-            
-        </form>
-  </div>
-  </div>
     
  
     <div class="container">
-     <!-- <div class="card-meta-wrapper" style=" margin-top:20px;  display:flex; overflow:auto;">
-        <a href="/addstatus" class="card-meta" style="width:90px; padding:10px; width:800px; border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >MyPrescriptions</a>
-        <a href="#" class="card-meta" style="width:90px; padding:10px; width:800px; margin-left:30px;    border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >Categories</a>
-        <a href="#" class="card-meta" style="width:90px; padding:10px; width:800px; margin-left:30px;    border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Find Drugs</a>
-         </div>-->
-      <!--<img src="static/img/wencol3.png" style="width:100%; margin-top:30px; height:250px;object-fit:cover; border-radius:10px; box-shadow:0 0 30px 4px hsla(0, 0%, 0%, 0.05); margin-bottom:20px;"loading="lazy" alt="The Wilmington"
-                  class="w-100">-->
+    
       
     <article>
       
@@ -179,57 +161,19 @@
 {% endif %}
 {% endwith %}
 
-<span class="" style="font-size:20px; margin-top:50px;">
-  Choose Course:
-</span>
-
-
-<select class="btn btn-secondary" id="schoolFilter" style="padding:15px; margin-bottom:20px;">
-  <option value="all">--All Course--</option>
-  <option value="Nursing">"Nursing"</option>
-  <option value="ECONOMICS">    "ECONOMICS"</option>
-    <option value="PUBLIC HEALTH">        "PUBLIC HEALTH"</option>
-      <option value="MANAGEMENT">        "MANAGEMENT"</option>
-        <option value="MARKETING">        "MARKETING "</option>
-          <option value="ACCOUNTING">        "ACCOUNTING "</option>
-            <option value="HUMAN RESOURCE">        "HUMAN RESOURCE"</option>
-              <option value="BANKING & FINANCE">        "BANKING & FINANCE"</option>
-                <option value="Civil Engineering">              "Civil Engineering "</option>
-                  <option value="Information Technology">             "Information Technology "</option>
-                    <option value="Computer Science ">         "Computer Science "</option>
-                            <option value="Nursing">        "Nursing"</option>
-          <option value="PA Dept">        "PA Dept"</option>
-            <option value="Faculty of Law ">       "Faculty of Law "</option>
-              <option value="Sociology ">       "Sociology "</option>
-                <option value="Vision and Life ">       "Vision and Life "</option>
-                  <option value="Social Work ">       "Social Work "</option>
-                    <option value="Communications and Laguages Studies">     "Communications and Laguages Studies"</option>
-          <option value="Theology">      "Theology"</option>
-            <option value="Psychology">      "Psychology "</option>
-          <option value="Environment and Development Studies">      "Environment and Development Studies"</option>
-            <option value="Communications and Media Studies">     "Communications and Media Studies "</option>
-              <option value="Agribusiness">        "Agribusiness"</option>
-          <option value="Design Interior, Graphic & Fashion">     "Design Interior, Graphic & Fashion "</option>
-            <option value="Real Estate ">       "Real Estate "</option>
-          <option value="Architecture">       "Architecture "</option>
-            <option value="Doctor of Pharmacy">       "Doctor of Pharmacy"</option>
-              <option value="Pharmacy Practice ">       "Pharmacy Practice "</option>
-                <option value="MGT & P.A.">    "MGT & P.A. "</option>
-</select>
-
-
     
-  <div class="row">
+  <div class="row mt-9">
     
 
 
 
-    {%for user in users%} 
+
     
-    <div class="col-md-3 col-12" style=" border-radius:10px; ">
+    <div class="col-md-12 col-12 " style=" border-radius:10px;  margin-top:150px;">
       <a style="text-decoration: none;" href="">
       <div class="card space" style="margin-bottom: 3vh;border-radius:10px;  padding: 10px;  border-radius: 10px;">
            <div style="background-color:#fff;#772620; border-radius:10px;  padding: 10px; ">  
+
             <h6 style="color: black; font-size:20px;" ><b>{{user.index}}</b></h6>
             <div style="display: flex; justify-content: space-between;">
               <h6 style="font-size: small;color: black; background-color:#f1c7c7; padding:5px; border-radius:7px;">  {{user.schools}}</h6>
@@ -254,7 +198,7 @@
       </a>
     </div>
 
-    {% endfor %}
+    
     
     </div>
     
@@ -270,7 +214,7 @@
     <div class="container">
       <div class="row">
               <div class="col-lg-4">
-                  <img src="https://www.central.edu.gh/static/img/Central-Uni-logo.png" alt="Central University Logo" class="logo">
+                  <img src="htt/ps://www.central.edu.gh/static/img/Central-Uni-logo.png" alt="Central University Logo" class="logo">
                   <address>
                       <span class="fs-2"><b>Mission</b></span>
                       We aim to provide transparent, efficient, and supportive financial solutions to empower students in managing their financial obligations effectively while promoting financial literacy and responsible financial decision-making within the university community.
@@ -317,7 +261,7 @@
   <!-- 
     - custom js link
   -->
-  <script src="static/assets/js/script.js"></script>
+  <script src="/static/assets/js/script.js"></script>
 
   <!-- 
     - ionicon link

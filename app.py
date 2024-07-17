@@ -1,3 +1,4 @@
+import base64
 import csv
 import io
 import urllib.request, urllib.parse
@@ -5,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages,send_file
 from flask_migrate import Migrate
 import json
+import qrcode
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, SubmitField, SelectField, IntegerField,PasswordField, SearchField
 from flask_login import login_required,login_user,logout_user,current_user,UserMixin, LoginManager
 from flask_marshmallow import Marshmallow
@@ -138,6 +140,7 @@ class Student(db.Model,UserMixin):
     year= db.Column(db.String()  )
     fees= db.Column(db.String()  )
     arrears= db.Column(db.String()  )
+    qr_code = db.Column(db.Text) 
     index= db.Column(db.String()  )
     guardian= db.Column(db.String()  )
     def __repr__(self):
@@ -331,6 +334,34 @@ def addpost():
 @login_required
 def addalumni():
     print("addstaff function started")
+    # if request.method == 'POST':
+    #     print("Method is POST")
+    #     if 'csv_file' in request.files:
+    #         print("CSV file found")
+    #         csv_file = request.files['csv_file']
+    #         if csv_file and csv_file.filename.endswith('.csv'):
+    #             print("CSV file is valid")
+    #             stream = io.StringIO(csv_file.stream.read().decode("UTF8"), newline=None)
+    #             csv_input = csv.reader(stream)
+    #             next(csv_input)  # Skip the header row
+    #             for row in csv_input:
+    #                 print("Processing row: ", row)
+    #                 if len(row) < 6:
+    #                     print("Error: Row {} doesn't have enough columns.".format(row), 'danger')
+    #                     continue  # Skip this row if it doesn't have enough columns
+                    
+    #                 new_user = Student(
+    #                     schools=row[0],
+    #                     year=  row[1],
+    #                     fees= row[2],
+    #                     index= row[3],
+    #                     arrears= row[4],
+    #                     guardian= row[5]
+    #                 )
+    #                 db.session.add(new_user)
+    #             db.session.commit()
+    #             print("Student added successfully from CSV file")
+    #             flash('Student added successfully from CSV file', 'success')
     if request.method == 'POST':
         print("Method is POST")
         if 'csv_file' in request.files:
@@ -341,24 +372,64 @@ def addalumni():
                 stream = io.StringIO(csv_file.stream.read().decode("UTF8"), newline=None)
                 csv_input = csv.reader(stream)
                 next(csv_input)  # Skip the header row
+                
                 for row in csv_input:
                     print("Processing row: ", row)
-                    if len(row) < 6:
-                        print("Error: Row {} doesn't have enough columns.".format(row), 'danger')
-                        continue  # Skip this row if it doesn't have enough columns
-                    
-                    new_user = Student(
-                        schools=row[0],
-                        year=  row[1],
-                        fees= row[2],
-                        index= row[3],
-                        arrears= row[4],
-                        guardian= row[5]
-                    )
-                    db.session.add(new_user)
-                db.session.commit()
-                print("Student added successfully from CSV file")
-                flash('Student added successfully from CSV file', 'success')
+                    # Ensure the row has the required number of columns by adding empty strings if necessary
+                    while len(row) < 6:
+                        row.append('')  # Append empty string for missing columns
+
+                    try:
+                        # Check if a user with the same 'no', 'firstname', and 'surname' already exists
+                        existing_user = Student.query.filter_by(schools=row[0]).first()
+                        
+                        if existing_user:
+                            # Skip updating existing user
+                            print(f"User with no {row[0]}, firstname {row[2]}, and surname {row[4]} already exists. Skipping update.")
+                            continue  # Skip this row
+                        else:
+                            # Add new user to the database
+                            new_user = Student(
+                                        schools=row[0],
+                                        year=  row[1],
+                                        fees= row[2],
+                                        index= row[3],
+                                        arrears= row[4],
+                                        guardian= row[5]
+                                    )
+                            db.session.add(new_user)
+                            db.session.commit()  # Commit each user individually for error handling
+
+                            # Generate QR code
+                            qr = qrcode.QRCode(
+                                version=1,
+                                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                                box_size=10,
+                                border=4,
+                            )
+                            # Define data to encode in QR code
+                            qr_url = f"http://10.0.13.193:7000//studentid/{new_user.id}"
+                            qr.add_data(qr_url)
+                            qr.make(fit=True)
+                            
+                            # Generate QR code image
+                            qr_img = qr.make_image(fill='black', back_color='white')
+
+                            # Convert QR code image to base64
+                            buffered = io.BytesIO()
+                            qr_img.save(buffered, format="PNG")
+                            qr_img_base64 = base64.b64encode(buffered.getvalue()).decode()
+
+                            # Store base64 encoded QR code
+                            new_user.qr_code = qr_img_base64
+                            db.session.commit()
+
+                    except Exception as e:
+                        print(f"Error processing row {row}: {e}")
+                        flash(f"Error processing row {row}: {e}", 'danger')
+
+                print("Staff members added successfully from CSV file")
+                flash('Staff members added successfully from CSV file', 'success')
                 return redirect(url_for('profile'))
 
         print("Please upload a valid CSV file.")
@@ -367,6 +438,13 @@ def addalumni():
 
     print("Rendering addAlumni.html")
     return render_template('addAlumni.html')
+
+
+
+@app.route('/studentid/<int:userid>', methods=['GET', 'POST'])
+def studentid(userid):
+    user = Student.query.filter_by(id=userid).first() 
+    return render_template("level.html",user=user)
 
 # @app.route('/addalumni', methods=['GET', 'POST'])
 # @login_required
