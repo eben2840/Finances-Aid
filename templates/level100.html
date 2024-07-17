@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,21 +13,20 @@
   <title></title>
   <meta name="title" content="">
   <meta name="description" content="">
-  <script src="static/css/index.js"></script>
-  
-  <script src="static/css/index.js"></script>
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com"> 
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css"> 
-  <!-- Local Styles -->
+  <script src="static/css/index.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
-  <!-- FontAwesomeKit -->
-  <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css"> 
+    <!-- Local Styles -->
+
+<!-- FontAwesomeKit -->
+    <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     
   <!-- 
     - favicon
@@ -56,10 +56,7 @@
   <!-- 
     - #PRELOADER
   -->
-  
-
-
-
+ 
   <!-- 
     - #HEADER
   -->
@@ -80,19 +77,31 @@
         </a>
 
         <ul class="navbar-list">
+
           <li class="navbar-item">
             <a href="/" class="navbar-link" data-nav-link>Dashboard</a>
           </li>
+
           <li class="navbar-item active">
             <a href="/news" class="navbar-link" data-nav-link>News Feed</a>
           </li>
+
           <li class="navbar-item">
             <a href="/bill" class="navbar-link" data-nav-link>Bills</a>
           </li>
+
+         <!-- <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>Contacts</a>
+          </li>-->
+
         </ul>
       </nav>
 
       <div class="header-action">
+       <!-- <button class="cart-btn" aria-label="cart">
+          <ion-icon name="bag" aria-hidden="true"></ion-icon>
+        </button>-->
+
         <a href="/newdash" class="btn btn-primary has-after mb-3">ADM</a>
       </div>
 
@@ -101,59 +110,70 @@
       </button>
 
       <div class="overlay" data-overlay data-nav-toggler></div>
+
     </div>
   </header>
 
+
+
+
   <main>
     <div class="containe" style="margin-top:80px; background-color:#772620; height:300px; padding:20px;">
-      <div class="container">
-        <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID</h6>
-        <form class="d-flex" role="search" method='POST' action='{{url_for('search')}}' style="margin-top:20px;">
-          {{form.hidden_tag()}}
-          <input class="input-field my-0 my-lg-0 mt-1 space" type="search" name='searched' placeholder="Search for course" aria-label="Search">
-          <button class="btn btn-secondary has-after" type="submit"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-        </form>
-      </div>
-    </div>
-
     <div class="container">
-      <article>
-        <div class="modal fade  modal-xl" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius:20px;">
-              <!--<div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-              </div>-->
-            </div>
+      <h6 style="font-size:20px; text-align:center; color:#fff; margin-bottom:20px; margin-top:40px;">Search for a student ID<h6>
+        <form class="d-flex " role="search" method='POST' action='{{url_for('search')}}'style="margin-top:20px;" >
+         {{form.hidden_tag()}}
+        
+          <input class="input-field my-0 my-lg-0 mt-1 space " type="search" name='searched' placeholder="Search for course" aria-label="Search" style="">
+          <button class="btn btn-secondary has-after" type="submit" > <i class="fa fa-search" aria-hidden="true"></i> </button>
+            
+        </form>
+  </div>
+  </div>
+    
+ 
+    <div class="container">
+     <!-- <div class="card-meta-wrapper" style=" margin-top:20px;  display:flex; overflow:auto;">
+        <a href="/addstatus" class="card-meta" style="width:90px; padding:10px; width:800px; border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >MyPrescriptions</a>
+        <a href="#" class="card-meta" style="width:90px; padding:10px; width:800px; margin-left:30px;    border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " >Categories</a>
+        <a href="#" class="card-meta" style="width:90px; padding:10px; width:800px; margin-left:30px;    border-style: solid; border-color: #3e8a08;  text-align:center; border-radius:10px; " class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Find Drugs</a>
+         </div>-->
+      <!--<img src="static/img/wencol3.png" style="width:100%; margin-top:30px; height:250px;object-fit:cover; border-radius:10px; box-shadow:0 0 30px 4px hsla(0, 0%, 0%, 0.05); margin-bottom:20px;"loading="lazy" alt="The Wilmington"
+                  class="w-100">-->
+      
+    <article>
+      
+      <div class="modal fade  modal-xl" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" >
+          <div class="modal-content" style="border-radius:20px;">
+            
+            
+          
+            <!--<div class="modal-footer">
+              <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+            </div>-->
           </div>
         </div>
-      </article>
-
-      <div class="container">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-success mb-3" role="alert">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-        {% endwith %}
-
-        
-        
+      </div>
       
-        {% for user in hundred %}  
-        <div class="department-item" data-school="{{ user.schools }}">
-         
-        </div>
-        {% endfor %}
-        </div>
-      
-       
-        <span class="" style="font-size:20px; margin-top:50px;">
-          Choose Course:
-        </span>
+      </div>
+     
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success mb-3" role="alert">
+        {{ message }} 
+        
+    </div>
+    
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<span class="" style="font-size:20px; margin-top:50px;">
+  Choose Course:
+</span>
 
         <select id="schoolFilter" class="btn btn-secondary"  style="padding:15px; margin-bottom:20px;">
           <option value="all">--All Course--</option>
@@ -214,10 +234,17 @@
             </a>
           </div>
           {% endfor %}
-        </div>
-      </div>
+        
     </div>
     
+  </div>
+  
+
+    </article>
+  </main>
+
+
+
   <footer>
     <div class="container">
       <div class="row">
@@ -261,36 +288,47 @@
         <div class="footer-bottom text-white" style="background-color:#772620;">
           <p>&copy; Copyright <strong>Central University</strong>. All Rights Reserved</p>
       </div>
-      </footer>
+    </div>
   </main>
 
-  <script>
-    $(document).ready(function () {
-      $('#schoolFilter').on('change', function () {
-        var selectedSchool = $(this).val();
-        $('.department-item').hide();
-        if (selectedSchool === 'all') {
-          $('.department-item').show();
-        } else {
-          $('.department-item').each(function () {
-            if ($(this).data('school') === selectedSchool) {
-              $(this).show();
+      <script>
+        $(document).ready(function () {
+          $('#schoolFilter').on('change', function () {
+            var selectedSchool = $(this).val();
+            $('.department-item').hide();
+            if (selectedSchool === 'all') {
+              $('.department-item').show();
+            } else {
+              $('.department-item').each(function () {
+                if ($(this).data('school') === selectedSchool) {
+                  $(this).show();
+                }
+              });
             }
           });
-        }
-      });
-    });
-  </script>
+        });
+      </script>
 
-  <!-- ionicon -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
-  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+<script src="static/assets/js/script.js"></script>
 
-  <!-- custom js link -->
+<!-- 
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 
 </body>
 </html>
+
+
+
+
+
