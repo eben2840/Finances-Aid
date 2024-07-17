@@ -52,7 +52,7 @@ class Registration(FlaskForm):
 #forms
 class Adduser(FlaskForm):
     guardian= StringField('guardian')
-    arrears= SelectField('faculty',  choices=[('tag','tag'),('N0.1', 'N0.1'), ('N0.2','N0.2')], default=None )
+    arrears= StringField('arrears')
     image_file = StringField('image_file')
     submit = SubmitField('submit') 
     
